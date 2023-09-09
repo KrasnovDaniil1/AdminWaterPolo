@@ -2,24 +2,15 @@
 import { ref } from "vue";
 
 export default {
-    setup() {
+    props: {
+        groups: {},
+    },
+    setup(props, context) {
         const modelActive = ref(false);
-
-        const groups = [
-            {
-                id: "0",
-                title: "Группа 1",
-                data: [
-                    "12.00-13.00",
-                    "12.00-13.00",
-                    "12.00-13.00",
-                    "12.00-13.00",
-                    "12.00-13.00",
-                    "12.00-13.00",
-                    "12.00-13.00",
-                ],
-            },
-        ];
+        const newGroup = ref({
+            title: "",
+            data: [],
+        });
         const tableDay = [
             "Понедельник",
             "Вторник",
@@ -30,10 +21,16 @@ export default {
             "Воскресенье",
         ];
 
+        const parentAddGroup = () => {
+            context.emit("parentAddGroup", newGroup.value);
+            modelActive.value = false;
+        };
+
         return {
             tableDay,
-            groups,
+            newGroup,
             modelActive,
+            parentAddGroup,
         };
     },
 };
@@ -45,12 +42,8 @@ export default {
             <h1>Группы:</h1>
             <button @click="modelActive = true">+ Добавить</button>
         </div>
-        <nav v-for="i in 2" :key="i">
-            <table
-                class="date_table"
-                v-for="(item, index) in groups"
-                :key="index"
-            >
+        <nav v-for="item in groups" :key="item.id">
+            <table class="date_table">
                 <h1>{{ item.title }}</h1>
                 <div class="table_block">
                     <tr v-for="(item, i) in item.data" :key="i">
@@ -63,16 +56,25 @@ export default {
                     </tr>
                 </div>
             </table>
-            <button>- Удалить</button>
+            <button @click="$emit('parentsDeleteGroup', item.id)">
+                - Удалить
+            </button>
         </nav>
         <div class="model" v-if="modelActive">
             <button class="model_btn" @click="modelActive = false">+</button>
             <nav class="model_block">
+                <label>
+                    <h1>Название группы</h1>
+                    <input v-model="newGroup.title" placeholder="Группа 1" />
+                </label>
                 <label v-for="(item, i) in tableDay" :key="i">
                     <h1>{{ item }}</h1>
-                    <input placeholder="12.00-13.00" />
+                    <input
+                        v-model="newGroup.data[i]"
+                        placeholder="12.00-13.00"
+                    />
                 </label>
-                <button @click="modelActive = false">Сохранить</button>
+                <button @click="parentAddGroup">Сохранить</button>
             </nav>
         </div>
     </div>
