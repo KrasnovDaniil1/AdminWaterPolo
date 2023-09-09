@@ -1,10 +1,28 @@
 <script>
 import { ref } from "vue";
 export default {
-    setup() {
+    props: {
+        trainers: {
+            type: Object,
+        },
+    },
+    setup(props, context) {
+        const newTrainers = ref({
+            img: "",
+            name: "",
+            phone: "",
+            rank: "",
+        });
         const modelActive = ref(false);
+
+        const parentAddTreners = () => {
+            context.emit("parentAddTreners", newTrainers.value);
+            modelActive.value = false;
+        };
         return {
             modelActive,
+            newTrainers,
+            parentAddTreners,
         };
     },
 };
@@ -15,48 +33,62 @@ export default {
             <h1>Тренеры:</h1>
             <button @click="modelActive = true">+ Добавить</button>
         </div>
-        <nav class="trainer_block" v-for="i in 2" :key="i">
+        <nav class="trainer_block" v-for="item in trainers" :key="item.id">
             <div class="decor_line"></div>
             <div class="img_block">
-                <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Bianchi_velez.jpg/170px-Bianchi_velez.jpg"
-                />
+                <img :src="item.src" />
             </div>
             <div class="inp_block">
                 <label>
                     <h1>Имя Фамилия Отчество:</h1>
-                    <input placeholder="Иван Иванович Иванов" disabled />
+                    <input :placeholder="item.name" disabled />
                 </label>
                 <label>
                     <h1>Номер телефона:</h1>
-                    <input placeholder="+79097955530" disabled />
+                    <input :placeholder="item.phone_number" disabled />
                 </label>
                 <label>
                     <h1>Должность:</h1>
-                    <input placeholder="Заместитель тренера" disabled />
+                    <input :placeholder="item.rank" disabled />
                 </label>
             </div>
             <div>
-                <button>- Удалить</button>
+                <button @click="$emit('parentsDeleteTreners', item.id)">
+                    - Удалить
+                </button>
             </div>
         </nav>
         <div class="model" v-if="modelActive">
             <button class="model_btn" @click="modelActive = false">+</button>
             <nav class="model_block">
-                <input type="file" accept="image/png, image/jpeg" />
+                <input
+                    type="file"
+                    @change="newTrainers.img = $event.target.files[0]"
+                    accept="image/png, image/jpeg"
+                />
                 <label>
                     <h1>Имя Фамилия Отчество:</h1>
-                    <input placeholder="Иван Иванович Иванов" />
+                    <input
+                        v-model="newTrainers.name"
+                        placeholder="Иван Иванович Иванов"
+                    />
                 </label>
                 <label>
                     <h1>Номер телефона:</h1>
-                    <input placeholder="+79097955530" />
+                    <input
+                        type="number"
+                        v-model="newTrainers.phone"
+                        placeholder="+79097955530"
+                    />
                 </label>
                 <label>
                     <h1>Должность:</h1>
-                    <input placeholder="Заместитель тренера" />
+                    <input
+                        v-model="newTrainers.rank"
+                        placeholder="Заместитель тренера"
+                    />
                 </label>
-                <button @click="modelActive = false">Сохранить</button>
+                <button @click="parentAddTreners">Сохранить</button>
             </nav>
         </div>
     </div>
