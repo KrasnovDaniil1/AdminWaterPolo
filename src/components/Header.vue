@@ -10,6 +10,14 @@ export default {
                 title: "Детям",
                 name: "children",
             },
+            {
+                title: "Студентам",
+                name: "student",
+            },
+            {
+                title: "Федерация",
+                name: "federation",
+            },
         ];
         return {
             rout,
@@ -47,6 +55,9 @@ header {
             font-size: var(--size-title);
             padding: 1rem 0;
             text-transform: uppercase;
+        }
+        .router-link-active {
+            color: rgb(251, 255, 0);
         }
     }
     .decor_bg {

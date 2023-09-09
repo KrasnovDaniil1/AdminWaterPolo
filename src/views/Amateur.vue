@@ -4,9 +4,10 @@ import { useStore } from "vuex";
 
 import Trainers from "../components/Trainers.vue";
 import Groups from "../components/Groups.vue";
+import Price from "../components/Price.vue";
 
 export default {
-    components: { Trainers, Groups },
+    components: { Trainers, Groups, Price },
     setup() {
         const store = useStore();
         onMounted(async () => {
@@ -38,11 +39,26 @@ export default {
             });
         };
 
+        let deletePrice = (id) => {
+            console.log("Удаление цен:", {
+                page: "Amateur",
+                id: id,
+            });
+        };
+        let addPrice = (info) => {
+            console.log("Добавление цен:", {
+                page: "Amateur",
+                info: info,
+            });
+        };
+
         return {
             deleteTreners,
             addTreners,
             deleteGroup,
             addGroup,
+            addPrice,
+            deletePrice,
             store,
             pageAmateur: computed(() => store.getters.getPageAmateur),
         };
@@ -61,6 +77,11 @@ export default {
             :groups="pageAmateur.groups"
             @parentsDeleteGroup="deleteGroup"
             @parentAddGroup="addGroup"
+        />
+        <Price
+            :price="pageAmateur.price"
+            @parentsDeletePrice="deletePrice"
+            @parentAddPrice="addPrice"
         />
     </section>
 </template>

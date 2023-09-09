@@ -13,6 +13,16 @@ const router = createRouter({
             name: "children",
             component: () => import("../views/Children.vue"),
         },
+        {
+            path: "/student",
+            name: "student",
+            component: () => import("../views/Student.vue"),
+        },
+        {
+            path: "/federation",
+            name: "federation",
+            component: () => import("../views/Federation.vue"),
+        },
     ],
 });
 

@@ -4,50 +4,36 @@ import { useStore } from "vuex";
 
 import Trainers from "../components/Trainers.vue";
 import Groups from "../components/Groups.vue";
-import Price from "../components/Price.vue";
 
 export default {
-    components: { Trainers, Groups, Price },
+    components: { Trainers, Groups },
     setup() {
         const store = useStore();
         onMounted(async () => {
-            await store.dispatch("actPageChildren");
+            await store.dispatch("actPageStudent");
         });
         let deleteTreners = (id) => {
             console.log("Удаление тренера", {
-                page: "Children",
+                page: "Student",
                 id: id,
             });
         };
         let addTreners = (info) => {
             console.log("Добавление тренера", {
-                page: "Children",
+                page: "Student",
                 info: info,
             });
         };
 
         let deleteGroup = (id) => {
             console.log("Удаление группы", {
-                page: "Children",
+                page: "Student",
                 id: id,
             });
         };
         let addGroup = (info) => {
             console.log("Добавление группы", {
-                page: "Children",
-                info: info,
-            });
-        };
-
-        let deletePrice = (id) => {
-            console.log("Удаление цен:", {
-                page: "Children",
-                id: id,
-            });
-        };
-        let addPrice = (info) => {
-            console.log("Добавление цен:", {
-                page: "Children",
+                page: "Student",
                 info: info,
             });
         };
@@ -57,10 +43,8 @@ export default {
             addTreners,
             deleteGroup,
             addGroup,
-            addPrice,
-            deletePrice,
             store,
-            pageAmateur: computed(() => store.getters.getPageChildren),
+            pageAmateur: computed(() => store.getters.getPageStudent),
         };
     },
 };
@@ -77,11 +61,6 @@ export default {
             :groups="pageAmateur.groups"
             @parentsDeleteGroup="deleteGroup"
             @parentAddGroup="addGroup"
-        />
-        <Price
-            :price="pageAmateur.price"
-            @parentsDeletePrice="deletePrice"
-            @parentAddPrice="addPrice"
         />
     </section>
 </template>
