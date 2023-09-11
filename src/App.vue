@@ -21,7 +21,7 @@ html {
     font-size: 16px;
 }
 :root {
-    --size-title: 28px;
+    --size-title: 20px;
     --size-elem: 24px;
     --size-text: 20px;
 
@@ -35,8 +35,6 @@ html {
 }
 .app {
     display: flex;
-    // max-width: 100vw;
-    // overflow: hidden;
     .router_view {
         width: 100%;
         padding: 1rem;

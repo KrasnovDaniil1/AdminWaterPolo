@@ -147,7 +147,7 @@ iframe {
     width: 100%;
     height: 100%;
 }
-button {
+/* button {
     border: none;
     font: inherit;
     color: inherit;
@@ -159,8 +159,8 @@ button {
     border-radius: 10px;
     color: var(--color-secondary);
     height: fit-content;
-}
-label {
+} */
+/* label {
     display: block;
     font-size: var(--size-elem);
     color: var(--color-primary);
@@ -174,11 +174,15 @@ input {
     color: var(--color-primary);
     width: 100%;
     min-width: 400px;
-}
+} */
 .decor_line {
     position: absolute;
     top: -1rem;
     width: 100%;
     height: 2px;
+    background: var(--bg-primary);
+}
+
+.bg-main {
     background: var(--bg-primary);
 }

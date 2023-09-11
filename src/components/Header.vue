@@ -53,7 +53,8 @@ header {
         height: 100vh;
         a {
             font-size: var(--size-title);
-            padding: 1rem 0;
+            text-decoration: none;
+            padding: 0.5rem 0;
             text-transform: uppercase;
         }
         .router-link-active {

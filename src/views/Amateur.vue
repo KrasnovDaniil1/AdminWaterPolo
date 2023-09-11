@@ -3,11 +3,11 @@ import { computed, onMounted } from "@vue/runtime-core";
 import { useStore } from "vuex";
 
 import Trainers from "../components/Trainers.vue";
-import Groups from "../components/Groups.vue";
-import Price from "../components/Price.vue";
+// import Groups from "../components/Groups.vue";
+// import Price from "../components/Price.vue";
 
 export default {
-    components: { Trainers, Groups, Price },
+    components: { Trainers },
     setup() {
         const store = useStore();
         onMounted(async () => {
@@ -26,39 +26,39 @@ export default {
             });
         };
 
-        let deleteGroup = (id) => {
-            console.log("Удаление группы", {
-                page: "Amateur",
-                id: id,
-            });
-        };
-        let addGroup = (info) => {
-            console.log("Добавление группы", {
-                page: "Amateur",
-                info: info,
-            });
-        };
+        // let deleteGroup = (id) => {
+        //     console.log("Удаление группы", {
+        //         page: "Amateur",
+        //         id: id,
+        //     });
+        // };
+        // let addGroup = (info) => {
+        //     console.log("Добавление группы", {
+        //         page: "Amateur",
+        //         info: info,
+        //     });
+        // };
 
-        let deletePrice = (id) => {
-            console.log("Удаление цен:", {
-                page: "Amateur",
-                id: id,
-            });
-        };
-        let addPrice = (info) => {
-            console.log("Добавление цен:", {
-                page: "Amateur",
-                info: info,
-            });
-        };
+        // let deletePrice = (id) => {
+        //     console.log("Удаление цен:", {
+        //         page: "Amateur",
+        //         id: id,
+        //     });
+        // };
+        // let addPrice = (info) => {
+        //     console.log("Добавление цен:", {
+        //         page: "Amateur",
+        //         info: info,
+        //     });
+        // };
 
         return {
             deleteTreners,
             addTreners,
-            deleteGroup,
-            addGroup,
-            addPrice,
-            deletePrice,
+            // deleteGroup,
+            // addGroup,
+            // addPrice,
+            // deletePrice,
             store,
             pageAmateur: computed(() => store.getters.getPageAmateur),
         };
@@ -68,12 +68,13 @@ export default {
 
 <template>
     <section>
+        <h2 class="text-center">Любители</h2>
         <Trainers
             :trainers="pageAmateur.trainers"
             @parentsDeleteTreners="deleteTreners"
             @parentAddTreners="addTreners"
         />
-        <Groups
+        <!-- <Groups
             :groups="pageAmateur.groups"
             @parentsDeleteGroup="deleteGroup"
             @parentAddGroup="addGroup"
@@ -82,7 +83,7 @@ export default {
             :price="pageAmateur.price"
             @parentsDeletePrice="deletePrice"
             @parentAddPrice="addPrice"
-        />
+        /> -->
     </section>
 </template>
 
