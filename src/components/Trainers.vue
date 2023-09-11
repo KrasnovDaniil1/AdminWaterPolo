@@ -3,18 +3,28 @@ import { ref } from "vue";
 export default {
     props: {
         trainers: {
-            type: Object,
+            type: Array,
         },
     },
     setup(props, context) {
-        const newTrainers = ref({
-            img: "",
+        const newTrainer = ref({
+            src: "",
             name: "",
-            phone: "",
+            phone_number: "",
             rank: "",
         });
-        const saveActive = ref();
+
+        const saveActive = ref("none");
         const modelActive = ref(false);
+
+        const changeTrainer = (id) => {
+            context.emit("parentChangeTrener", id, newTrainer.value);
+            saveActive.value = "none";
+        };
+
+        // const deleteTrainer = (id) => {
+        //     context.emit("parentAddTreners", newTrainers.value);
+        // };
 
         // const parentAddTreners = () => {
         //     context.emit("parentAddTreners", newTrainers.value);
@@ -22,8 +32,9 @@ export default {
         // };
         return {
             modelActive,
-            newTrainers,
+            newTrainer,
             saveActive,
+            changeTrainer,
             // parentAddTreners,
         };
     },
@@ -40,22 +51,25 @@ export default {
         <div
             class="row bg-main my-3 py-3"
             style="border-radius: 10px"
-            v-for="item in trainers"
-            :key="item.id"
+            v-for="(item, index) in trainers"
+            :key="index"
         >
-            <img
-                src="https://bipbap.ru/wp-content/uploads/2017/04/0_7c779_5df17311_orig.jpg"
-                class="col-2"
-                style="aspect-ratio: 35/45"
-            />
+            <img :src="item.src" class="col-2" style="aspect-ratio: 35/45" />
             <nav class="d-flex flex-column justify-content-between col-8">
-                <input type="file" class="form-control" />
+                <input
+                    type="file"
+                    class="form-control"
+                    @change="newTrainer.src = $event.target.files[0]"
+                    :disabled="saveActive != index"
+                />
                 <label class="d-flex">
                     <span class="input-group-text">И.Ф.О:</span>
                     <input
                         type="text"
                         class="form-control"
-                        :placeholder="item.name"
+                        @change="newTrainer.name = $event.target.value"
+                        :value="item.name"
+                        :disabled="saveActive != index"
                     />
                 </label>
                 <label class="d-flex">
@@ -63,7 +77,9 @@ export default {
                     <input
                         type="text"
                         class="form-control"
-                        :placeholder="item.phone_number"
+                        @change="newTrainer.phone_number = $event.target.value"
+                        :value="item.phone_number"
+                        :disabled="saveActive != index"
                     />
                 </label>
                 <label class="d-flex">
@@ -71,38 +87,48 @@ export default {
                     <input
                         type="text"
                         class="form-control"
-                        :placeholder="item.rank"
+                        @change="item.rank = $event.target.value"
+                        :value="item.rank"
+                        :disabled="saveActive != index"
                     />
                 </label>
             </nav>
             <div
                 class="d-flex flex-column justify-content-between col-2"
-                v-if="saveActive != item.id"
+                v-if="saveActive == index"
             >
                 <button
                     type="button"
-                    class="btn btn-outline-success"
-                    @click="saveActive = item.id"
+                    class="btn btn-outline-primary"
+                    @click="changeTrainer(index)"
                 >
-                    Редактировать
-                </button>
-                <button type="button" class="btn btn-outline-danger">
-                    Удалить
-                </button>
-            </div>
-            <div
-                class="d-flex flex-column justify-content-between col-2"
-                v-if="saveActive == item.id"
-            >
-                <button type="button" class="btn btn-outline-primary">
                     Сохранить
                 </button>
                 <button
                     type="button"
                     class="btn btn-outline-danger"
-                    @click="saveActive = ''"
+                    @click="saveActive = 'none'"
                 >
                     Отменить
+                </button>
+            </div>
+            <div
+                class="d-flex flex-column justify-content-between col-2"
+                v-else
+            >
+                <button
+                    type="button"
+                    class="btn btn-outline-success"
+                    @click="saveActive = index"
+                >
+                    Редактировать
+                </button>
+                <button
+                    type="button"
+                    class="btn btn-outline-danger"
+                    @click="$emit('parentDeleteTrener', index)"
+                >
+                    Удалить
                 </button>
             </div>
         </div>

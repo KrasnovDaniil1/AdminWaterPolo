@@ -10,21 +10,42 @@ export default {
     components: { Trainers },
     setup() {
         const store = useStore();
+
         onMounted(async () => {
             await store.dispatch("actPageAmateur");
         });
-        let deleteTreners = (id) => {
-            console.log("Удаление тренера", {
-                page: "Amateur",
+
+        let deleteTrener = (id) => {
+            console.log("Удаление тренера в Amateur", id);
+            store.commit("mutDeleteTrainer", {
+                page: "pageAmateur",
                 id: id,
             });
         };
-        let addTreners = (info) => {
-            console.log("Добавление тренера", {
-                page: "Amateur",
-                info: info,
+        let changeTrener = (id, item) => {
+            console.log("Редактирование тренера в Amateur", id, item);
+            store.commit("mutChangeTrainer", {
+                page: "pageAmateur",
+                id,
+                item,
             });
+            // store.commit("mutDeleteTrainer", {
+            //     page: "Amateur",
+            //     id: id,
+            // });
         };
+        // let deleteTreners = (id) => {
+        //     console.log("Удаление тренера", {
+        //         page: "Amateur",
+        //         id: id,
+        //     });
+        // };
+        // let addTreners = (info) => {
+        //     console.log("Добавление тренера", {
+        //         page: "Amateur",
+        //         info: info,
+        //     });
+        // };
 
         // let deleteGroup = (id) => {
         //     console.log("Удаление группы", {
@@ -53,8 +74,8 @@ export default {
         // };
 
         return {
-            deleteTreners,
-            addTreners,
+            deleteTrener,
+            changeTrener,
             // deleteGroup,
             // addGroup,
             // addPrice,
@@ -71,8 +92,8 @@ export default {
         <h2 class="text-center">Любители</h2>
         <Trainers
             :trainers="pageAmateur.trainers"
-            @parentsDeleteTreners="deleteTreners"
-            @parentAddTreners="addTreners"
+            @parentDeleteTrener="deleteTrener"
+            @parentChangeTrener="changeTrener"
         />
         <!-- <Groups
             :groups="pageAmateur.groups"
