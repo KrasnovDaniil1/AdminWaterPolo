@@ -1,14 +1,33 @@
 // import axios from "axios";
 // const api = "http://localhost:8080/api/v1";
 
-export const UploadImg = (src) => {
-    return "https://bipbap.ru/wp-content/uploads/2017/04/0_7c779_5df17311_orig.jpg";
+let myHeaders = new Headers();
+
+export const UploadImg = async (src) => {
+    console.log("принмаю", src);
+    myHeaders.append(
+        "Authorization",
+        "Bearer KjrOO-UX1-Ee3Shh1luZ2fDEWFeDTD?Fp/pZ4fgJdLpv3wfX/b0gmChpRFTf6YdOHF3Ije2i51LB?IthypPCxmop0pGXfNj7PygQ1MBQX/NLN57AhJg!xsXD09uBxHxW6ZGFJXItFbIOmdBGUf4kIOnTl7Tmy0eXwsClh9I6Y7??rnTL0fpV0vu/6RkH/bNW/f-eGT0Y?xYoCWxYsrqHZEXXV!7trE0hV4Of7UJXT-/voFSOeAU/-e4sGfVt=e7V"
+    );
+    let requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: {
+            "files[]": src,
+        },
+    };
+    let response = await fetch(
+        "https://klwp.pro/api/upload.php",
+        requestOptions
+    );
+    console.log(response);
+    // let data = await response.json();
+    // return data;
 };
 
 export const PageAmateur = async () => {
     let response = await fetch("https://klwp.pro/api/pages/pageAmateur.json");
     let data = await response.json();
-    console.log(data);
     return data;
     // return {
     //     trainers: [

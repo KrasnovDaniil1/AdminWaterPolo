@@ -1,7 +1,9 @@
 import * as api from "../api/api";
 
 export const actPageAmateur = (context) => {
-    context.commit("mutPageAmateur", api.PageAmateur());
+    api.PageAmateur().then((data) => {
+        context.commit("mutPageAmateur", data);
+    });
 };
 
 export const actPageChildren = (context) => {
@@ -14,4 +16,3 @@ export const actPageStudent = (context) => {
 export const actPageFederation = (context) => {
     context.commit("mutPageFederation", api.PageFederation());
 };
-

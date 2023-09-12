@@ -15,7 +15,14 @@ export const mutChangeTrainer = (state, { page, id, item }) => {
             state[page].trainers[id][key] = item[key];
         }
     }
-    console.log(state.pageAmateur.trainers);
+};
+
+export const mutAddTrainer = (state, { page, item }) => {
+    if (item.src != "") {
+        api.UploadImg(item.src).then((e) => (item.src = e[0]));
+    }
+    console.log("P", item);
+    state[page].trainers.push(item);
 };
 
 export const mutPageChildren = (state, page) => (state.pageChildren = page);

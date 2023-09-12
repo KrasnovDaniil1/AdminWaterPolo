@@ -15,71 +15,33 @@ export default {
             await store.dispatch("actPageAmateur");
         });
 
-        let deleteTrener = (id) => {
+        let deleteTrainer = (id) => {
             console.log("Удаление тренера в Amateur", id);
             store.commit("mutDeleteTrainer", {
                 page: "pageAmateur",
                 id: id,
             });
         };
-        let changeTrener = (id, item) => {
+        let changeTrainer = (id, item) => {
             console.log("Редактирование тренера в Amateur", id, item);
             store.commit("mutChangeTrainer", {
                 page: "pageAmateur",
                 id,
                 item,
             });
-            // store.commit("mutDeleteTrainer", {
-            //     page: "Amateur",
-            //     id: id,
-            // });
         };
-        // let deleteTreners = (id) => {
-        //     console.log("Удаление тренера", {
-        //         page: "Amateur",
-        //         id: id,
-        //     });
-        // };
-        // let addTreners = (info) => {
-        //     console.log("Добавление тренера", {
-        //         page: "Amateur",
-        //         info: info,
-        //     });
-        // };
-
-        // let deleteGroup = (id) => {
-        //     console.log("Удаление группы", {
-        //         page: "Amateur",
-        //         id: id,
-        //     });
-        // };
-        // let addGroup = (info) => {
-        //     console.log("Добавление группы", {
-        //         page: "Amateur",
-        //         info: info,
-        //     });
-        // };
-
-        // let deletePrice = (id) => {
-        //     console.log("Удаление цен:", {
-        //         page: "Amateur",
-        //         id: id,
-        //     });
-        // };
-        // let addPrice = (info) => {
-        //     console.log("Добавление цен:", {
-        //         page: "Amateur",
-        //         info: info,
-        //     });
-        // };
+        let addTrainer = (item) => {
+            console.log("Добавление тренера в Amateur", item);
+            store.commit("mutAddTrainer", {
+                page: "pageAmateur",
+                item,
+            });
+        };
 
         return {
-            deleteTrener,
-            changeTrener,
-            // deleteGroup,
-            // addGroup,
-            // addPrice,
-            // deletePrice,
+            deleteTrainer,
+            changeTrainer,
+            addTrainer,
             store,
             pageAmateur: computed(() => store.getters.getPageAmateur),
         };
@@ -92,8 +54,9 @@ export default {
         <h2 class="text-center">Любители</h2>
         <Trainers
             :trainers="pageAmateur.trainers"
-            @parentDeleteTrener="deleteTrener"
-            @parentChangeTrener="changeTrener"
+            @parentDeleteTrainer="deleteTrainer"
+            @parentChangeTrainer="changeTrainer"
+            @parentAddTrainer="addTrainer"
         />
         <!-- <Groups
             :groups="pageAmateur.groups"

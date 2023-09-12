@@ -18,24 +18,21 @@ export default {
         const modelActive = ref(false);
 
         const changeTrainer = (id) => {
-            context.emit("parentChangeTrener", id, newTrainer.value);
+            context.emit("parentChangeTrainer", id, newTrainer.value);
             saveActive.value = "none";
         };
 
-        // const deleteTrainer = (id) => {
-        //     context.emit("parentAddTreners", newTrainers.value);
-        // };
+        const addTrainer = () => {
+            context.emit("parentAddTrainer", newTrainer.value);
+            modelActive.value = false;
+        };
 
-        // const parentAddTreners = () => {
-        //     context.emit("parentAddTreners", newTrainers.value);
-        //     modelActive.value = false;
-        // };
         return {
             modelActive,
             newTrainer,
             saveActive,
+            addTrainer,
             changeTrainer,
-            // parentAddTreners,
         };
     },
 };
@@ -44,9 +41,65 @@ export default {
     <div class="trainers">
         <div class="d-flex justify-content-between align-items-start">
             <h4>Тренеры:</h4>
-            <button type="button" class="btn btn-outline-primary">
+            <button
+                type="button"
+                class="btn btn-outline-primary"
+                @click="modelActive = true"
+            >
                 + Добавить
             </button>
+        </div>
+        <div
+            class="model bg-main d-flex flex-column align-items-center"
+            v-if="modelActive"
+        >
+            <nav class="d-flex flex-column justify-content-between col-8">
+                <input
+                    type="file"
+                    class="form-control my-2"
+                    @change="newTrainer.src = $event.target.files[0]"
+                />
+                <label class="d-flex my-2">
+                    <span class="input-group-text">И.Ф.О:</span>
+                    <input
+                        type="text"
+                        class="form-control"
+                        v-model="newTrainer.name"
+                    />
+                </label>
+                <label class="d-flex my-2">
+                    <span class="input-group-text">Телефон:</span>
+                    <input
+                        type="text"
+                        class="form-control"
+                        v-model="newTrainer.phone_number"
+                    />
+                </label>
+                <label class="d-flex my-2">
+                    <span class="input-group-text">Должность:</span>
+                    <input
+                        type="text"
+                        class="form-control"
+                        v-model="newTrainer.rank"
+                    />
+                </label>
+            </nav>
+            <div class="d-flex justify-content-between col-8 my-2">
+                <button
+                    type="button"
+                    class="btn btn-outline-primary"
+                    @click="addTrainer"
+                >
+                    Сохранить
+                </button>
+                <button
+                    type="button"
+                    class="btn btn-outline-danger"
+                    @click="modelActive = false"
+                >
+                    Отменить
+                </button>
+            </div>
         </div>
         <div
             class="row bg-main my-3 py-3"
@@ -87,7 +140,7 @@ export default {
                     <input
                         type="text"
                         class="form-control"
-                        @change="item.rank = $event.target.value"
+                        @change="newTrainer.rank = $event.target.value"
                         :value="item.rank"
                         :disabled="saveActive != index"
                     />
@@ -126,7 +179,7 @@ export default {
                 <button
                     type="button"
                     class="btn btn-outline-danger"
-                    @click="$emit('parentDeleteTrener', index)"
+                    @click="$emit('parentDeleteTrainer', index)"
                 >
                     Удалить
                 </button>
