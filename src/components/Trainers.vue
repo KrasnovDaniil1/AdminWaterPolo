@@ -50,7 +50,7 @@ export default {
             </button>
         </div>
         <div
-            class="model bg-main d-flex flex-column align-items-center"
+            class="model bg-main d-flex flex-column align-items-center my-2 br-10"
             v-if="modelActive"
         >
             <nav class="d-flex flex-column justify-content-between col-8">
@@ -102,8 +102,7 @@ export default {
             </div>
         </div>
         <div
-            class="row bg-main my-3 py-3"
-            style="border-radius: 10px"
+            class="row bg-main my-3 py-3 br-10"
             v-for="(item, index) in trainers"
             :key="index"
         >
@@ -187,8 +186,3 @@ export default {
         </div>
     </div>
 </template>
-
-<style lang="scss" scoped>
-.treners {
-}
-</style>

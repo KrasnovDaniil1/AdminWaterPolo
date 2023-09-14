@@ -186,3 +186,6 @@ input {
 .bg-main {
     background: var(--bg-primary);
 }
+.br-10 {
+    border-radius: 10px;
+}

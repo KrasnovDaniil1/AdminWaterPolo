@@ -1,17 +1,20 @@
 <script>
 import { ref } from "vue";
-
 export default {
     props: {
-        groups: {},
+        groups: {
+            type: Array,
+        },
     },
     setup(props, context) {
         const modelActive = ref(false);
+        const saveActive = ref("none");
+
         const newGroup = ref({
             title: "",
-            data: [],
+            data: ["-", "-", "-", "-", "-", "-", "-"],
         });
-        const tableDay = [
+        const days = [
             "Понедельник",
             "Вторник",
             "Среда",
@@ -21,154 +24,157 @@ export default {
             "Воскресенье",
         ];
 
-        const parentAddGroup = () => {
+        const clearNewGroup = () => {
+            newGroup.value = {
+                title: "Группа 1",
+                data: ["-", "-", "-", "-", "-", "-", "-"],
+            };
+        };
+        const changeGroup = (id) => {
+            for (let i = 0; i < props.groups[id].data.length; i++) {
+                if (newGroup.value.data[i] == "-") {
+                    newGroup.value.data[i] = props.groups[id].data[i];
+                }
+            }
+            context.emit("parentChangeGroup", id, newGroup.value);
+            saveActive.value = "none";
+            clearNewGroup();
+        };
+
+        const addGroup = () => {
             context.emit("parentAddGroup", newGroup.value);
             modelActive.value = false;
         };
 
         return {
-            tableDay,
-            newGroup,
             modelActive,
-            parentAddGroup,
+            newGroup,
+            days,
+            saveActive,
+            changeGroup,
+            addGroup,
         };
     },
 };
 </script>
 
 <template>
-    <div class="group">
-        <div class="title">
-            <h1>Группы:</h1>
-            <button @click="modelActive = true">+ Добавить</button>
-        </div>
-        <nav v-for="item in groups" :key="item.id">
-            <table class="date_table">
-                <h1>{{ item.title }}</h1>
-                <div class="table_block">
-                    <tr v-for="(item, i) in item.data" :key="i">
-                        <th>
-                            {{ tableDay[i] }}
-                        </th>
-                        <td>
-                            {{ item }}
-                        </td>
-                    </tr>
-                </div>
-            </table>
-            <button @click="$emit('parentsDeleteGroup', item.id)">
-                - Удалить
+    <div class="trainers">
+        <div class="d-flex justify-content-between align-items-start">
+            <h4>Группы:</h4>
+            <button
+                type="button"
+                class="btn btn-outline-primary"
+                @click="modelActive = true"
+            >
+                + Добавить
             </button>
-        </nav>
-        <div class="model" v-if="modelActive">
-            <button class="model_btn" @click="modelActive = false">+</button>
-            <nav class="model_block">
-                <label>
-                    <h1>Название группы</h1>
-                    <input v-model="newGroup.title" placeholder="Группа 1" />
-                </label>
-                <label v-for="(item, i) in tableDay" :key="i">
-                    <h1>{{ item }}</h1>
+        </div>
+        <div
+            class="model bg-main d-flex flex-column align-items-center px-3 py-1 my-2 br-10"
+            v-if="modelActive"
+        >
+            <nav class="row bg-main py-2">
+                <label class="d-flex col-6 my-1">
+                    <span class="input-group-text">Название группы:</span>
                     <input
-                        v-model="newGroup.data[i]"
-                        placeholder="12.00-13.00"
+                        type="text"
+                        class="form-control"
+                        v-model="newGroup.title"
                     />
                 </label>
-                <button @click="parentAddGroup">Сохранить</button>
+                <label
+                    class="d-flex col-6 my-1"
+                    v-for="(day, i) in days"
+                    :key="i"
+                >
+                    <span class="input-group-text">{{ day }}</span>
+                    <input
+                        type="text"
+                        class="form-control"
+                        v-model="newGroup.data[i]"
+                    />
+                </label>
             </nav>
+            <div class="d-flex justify-content-between col-8">
+                <button
+                    type="button"
+                    class="btn btn-outline-primary"
+                    @click="addGroup"
+                >
+                    Сохранить
+                </button>
+                <button
+                    type="button"
+                    class="btn btn-outline-danger"
+                    @click="modelActive = false"
+                >
+                    Отменить
+                </button>
+            </div>
+        </div>
+        <div
+            class="row bg-main py-2 my-3 br-10"
+            v-for="(item, index) in groups"
+            :key="index"
+        >
+            <label class="d-flex col-6 my-1">
+                <span class="input-group-text">Название группы:</span>
+                <input
+                    type="text"
+                    class="form-control"
+                    :value="item.title"
+                    @change="newGroup.title = $event.target.value"
+                    :disabled="saveActive != index"
+                />
+            </label>
+            <label class="d-flex col-6 my-1" v-for="(day, i) in days" :key="i">
+                <span class="input-group-text">{{ day }}</span>
+                <input
+                    type="text"
+                    class="form-control"
+                    :value="item.data[i]"
+                    @change="newGroup.data[i] = $event.target.value"
+                    :disabled="saveActive != index"
+                />
+            </label>
+            <div
+                class="d-flex justify-content-evenly col-12 my-1"
+                v-if="saveActive == index"
+            >
+                <button
+                    type="button"
+                    class="btn btn-outline-primary"
+                    @click="changeGroup(index)"
+                >
+                    Сохранить
+                </button>
+                <button
+                    type="button"
+                    class="btn btn-outline-danger"
+                    @click="saveActive = 'none'"
+                >
+                    Отменить
+                </button>
+            </div>
+            <div class="d-flex justify-content-evenly col-12 my-1" v-else>
+                <button
+                    type="button"
+                    class="btn btn-outline-success"
+                    @click="saveActive = index"
+                >
+                    Редактировать
+                </button>
+                <button
+                    type="button"
+                    class="btn btn-outline-danger"
+                    @click="$emit('parentDeleteGroup', index)"
+                >
+                    Удалить
+                </button>
+            </div>
         </div>
     </div>
 </template>
 
-<style lang="scss" scoped>
-.group {
-    .title {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        h1 {
-            font-size: var(--size-title);
-            text-transform: uppercase;
-        }
-        button {
-            background: rgb(72, 0, 255);
-        }
-    }
-    nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        .date_table {
-            padding: 1rem 0;
-            display: grid;
-            grid-template-columns: 1fr;
-            h1 {
-                padding: 0.5rem 0;
-                text-align: center;
-                background: var(--bg-primary);
-                font-size: var(--size-title);
-                color: var(--color-secondary);
-                font-weight: bold;
-            }
-            .table_block {
-                display: grid;
-                grid-template-columns: repeat(7, 1fr);
-                font-size: var(--size-elem);
-                tr {
-                    display: flex;
-                    flex-direction: column;
-                    text-align: center;
-                    th,
-                    td {
-                        border: 1px solid var(--bg-primary);
-                        padding: 0.5rem;
-                    }
-                }
-            }
-        }
-    }
-    .model {
-        position: fixed;
-        top: 0;
-        left: 0;
-        background: rgba(1, 1, 1, 0.5);
-        width: 100%;
-        height: 100vh;
-        .model_btn {
-            position: absolute;
-            width: 4rem;
-            height: 4rem;
-            top: 1rem;
-            right: 1rem;
-            font-size: 50px;
-            background: var(--bg-primary);
-            transform: rotate(45deg);
-        }
-        .model_block {
-            position: relative;
-            width: fit-content;
-            top: 50%;
-            left: 50%;
-            display: flex;
-            flex-direction: column;
-
-            transform: translate(-50%, -50%);
-            background: var(--bg-primary);
-            border-radius: 10px;
-            padding: 1rem;
-            h1 {
-                color: var(--color-secondary);
-            }
-            input {
-                background: var(--bg-secondary);
-            }
-            label {
-                margin-bottom: 0.5rem;
-            }
-            button {
-                background: rgb(25, 0, 255);
-            }
-        }
-    }
-}
-</style>
+<style lang="scss" scoped></style>

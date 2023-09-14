@@ -3,11 +3,11 @@ import { computed, onMounted } from "@vue/runtime-core";
 import { useStore } from "vuex";
 
 import Trainers from "../components/Trainers.vue";
-// import Groups from "../components/Groups.vue";
+import Groups from "../components/Groups.vue";
 // import Price from "../components/Price.vue";
 
 export default {
-    components: { Trainers },
+    components: { Trainers, Groups },
     setup() {
         const store = useStore();
 
@@ -17,7 +17,7 @@ export default {
 
         let deleteTrainer = (id) => {
             console.log("Удаление тренера в Amateur", id);
-            store.commit("mutDeleteTrainer", {
+            store.dispatch("actDeleteTrainer", {
                 page: "pageAmateur",
                 id: id,
             });
@@ -38,10 +38,36 @@ export default {
             });
         };
 
+        let deleteGroup = (id) => {
+            console.log("Удаление группы в Amateur", id);
+            store.commit("mutDeleteGroup", {
+                page: "pageAmateur",
+                id: id,
+            });
+        };
+        let changeGroup = (id, item) => {
+            console.log("Редактирование группы в Amateur", id, item);
+            store.commit("mutChangeGroup", {
+                page: "pageAmateur",
+                id,
+                item,
+            });
+        };
+        let addGroup = (item) => {
+            console.log("Добавление группы в Amateur", item);
+            store.commit("mutAddGroup", {
+                page: "pageAmateur",
+                item,
+            });
+        };
+
         return {
             deleteTrainer,
             changeTrainer,
             addTrainer,
+            deleteGroup,
+            changeGroup,
+            addGroup,
             store,
             pageAmateur: computed(() => store.getters.getPageAmateur),
         };
@@ -58,21 +84,16 @@ export default {
             @parentChangeTrainer="changeTrainer"
             @parentAddTrainer="addTrainer"
         />
-        <!-- <Groups
+        <Groups
             :groups="pageAmateur.groups"
-            @parentsDeleteGroup="deleteGroup"
+            @parentDeleteGroup="deleteGroup"
+            @parentChangeGroup="changeGroup"
             @parentAddGroup="addGroup"
         />
-        <Price
+        <!-- <Price
             :price="pageAmateur.price"
             @parentsDeletePrice="deletePrice"
             @parentAddPrice="addPrice"
         /> -->
     </section>
 </template>
-
-<style lang="scss" scoped>
-section {
-    // background: red;
-}
-</style>
