@@ -18,6 +18,10 @@ export default {
                 title: "Федерация",
                 name: "federation",
             },
+            {
+                title: "Медио",
+                name: "medio",
+            },
         ];
         return {
             rout,

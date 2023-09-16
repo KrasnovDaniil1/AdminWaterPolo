@@ -23,6 +23,11 @@ const router = createRouter({
             name: "federation",
             component: () => import("../views/Federation.vue"),
         },
+        {
+            path: "/medio",
+            name: "medio",
+            component: () => import("../views/Medio.vue"),
+        },
     ],
 });
 
