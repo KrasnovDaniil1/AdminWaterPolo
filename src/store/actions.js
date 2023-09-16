@@ -1,41 +1,108 @@
 import * as api from "../api/api";
 
-export const actPageAmateur = async (context) => {
-    context.commit("mutPageAmateur", await api.Page("pageAmateur"));
+// получение json страницы
+export const actPage = async (context, page) => {
+    context.commit("mutLoader", true);
+    context.commit("mutPage", {
+        page: page,
+        data: await api.Page(page),
+    });
+    context.commit("mutLoader", false);
 };
 
-export const actPageChildren = async (context) => {
-    context.commit("mutPageChildren", await api.Page("pageChildren"));
+// удаление тренера
+export const actDeleteTrainer = async ({ commit, state }, { page, id }) => {
+    commit("mutLoader", true);
+    state[page].trainers.splice(id, 1);
+    state[page] = await api.UploadPage(page, state[page]);
+    commit("mutLoader", false);
 };
 
-export const actPageStudent = async (context) => {
-    context.commit("mutPageStudent", await api.Page("pageStudent"));
+// удаление группы
+export const actDeleteGroup = async ({ commit, state }, { page, id }) => {
+    commit("mutLoader", true);
+    state[page].groups.splice(id, 1);
+    state[page] = await api.UploadPage(page, state[page]);
+    commit("mutLoader", false);
 };
 
-export const actPageFederation = async (context) => {
-    context.commit("mutPageFederation", await api.Page("pageFederation"));
+// удаление цены
+export const actDeletePrice = async ({ commit, state }, { page, id }) => {
+    commit("mutLoader", true);
+    state[page].price.splice(id, 1);
+    state[page] = await api.UploadPage(page, state[page]);
+    commit("mutLoader", false);
 };
 
-export const actDeleteTrainer = async (context, { page, id }) => {
-    context.state[page].trainers.splice(id, 1);
-    context.state[page] = await api.UploadPage(page, context.state.pageAmateur);
+// редактирование тренера
+export const actChangeTrainer = async (
+    { commit, state },
+    { page, id, item }
+) => {
+    commit("mutLoader", true);
+    let src = "";
+    if (item.src != "") {
+        src = await api.UploadImg(item.src);
+        item.src = src[0];
+    }
+    for (let key in item) {
+        if (item[key] != "") {
+            state[page].trainers[id][key] = item[key];
+        }
+    }
+    state[page] = await api.UploadPage(page, state[page]);
+    commit("mutLoader", false);
 };
 
-// export const actNewPageAmateur = async (context) => {
-//     context.commit(
-//         "mutPageAmateur",
-//         await api.UploadPage("pageAmateur", context.state.pageAmateur)
-//     );
-// };
+// редактирование группы
+export const actChangeGroup = async ({ commit, state }, { page, id, item }) => {
+    commit("mutLoader", true);
+    for (let key in item) {
+        if (item[key] != "") {
+            state[page].groups[id][key] = item[key];
+        }
+    }
+    state[page] = await api.UploadPage(page, state[page]);
+    commit("mutLoader", false);
+};
 
-// export const actNewPageChildren = async (context) => {
-//     context.commit("mutPageChildren", await api.UploadPage("pageChildren"));
-// };
+// редактирование цен
+export const actChangePrice = async ({ commit, state }, { page, id, item }) => {
+    commit("mutLoader", true);
+    for (let key in item) {
+        if (item[key] != "") {
+            state[page].price[id][key] = item[key];
+        }
+    }
+    state[page] = await api.UploadPage(page, state[page]);
+    commit("mutLoader", false);
+};
 
-// export const actNewPageStudent = async (context) => {
-//     context.commit("mutPageStudent", await api.UploadPage("pageStudent"));
-// };
+// добавление тренера
+export const actAddTrainer = async ({ commit, state }, { page, item }) => {
+    commit("mutLoader", true);
+    let src = "";
+    if (item.src != "") {
+        src = await api.UploadImg(item.src);
+        item.src = src[0];
+    }
+    state[page].trainers.push(item);
+    state[page] = await api.UploadPage(page, state[page]);
+    commit("mutLoader", false);
+};
 
-// export const actNewPageFederation = async (context) => {
-//     context.commit("mutPageFederation", await api.UploadPage("pageFederation"));
-// };
+// добавление группы
+export const actAddGroup = async ({ commit, state }, { page, item }) => {
+    commit("mutLoader", true);
+    state[page].groups.push(item);
+    state[page] = await api.UploadPage(page, state[page]);
+    commit("mutLoader", false);
+};
+
+// добавление цен
+export const actAddPrice = async ({ commit, state }, { page, item }) => {
+    commit("mutLoader", true);
+    state[page].price.push(item);
+    state[page] = await api.UploadPage(page, state[page]);
+    commit("mutLoader", false);
+};

@@ -16,10 +16,10 @@ export const UploadImg = async (src) => {
 };
 
 export const UploadPage = async (page, kod) => {
-    let file = JSON.stringify(kod);
+    kod = JSON.stringify(kod);
     let form = new FormData();
-    form.append("data", file);
-    let response = await fetch(`https://klwp.pro/api/pages/${page}.json`, {
+    form.append("data", kod);
+    let response = await fetch(`https://klwp.pro/api/page.php?page=${page}`, {
         method: "POST",
         headers: {
             Authorization: auth,
@@ -29,6 +29,7 @@ export const UploadPage = async (page, kod) => {
     let data = await response.json();
     return data;
 };
+
 
 export const Page = async (page) => {
     let response = await fetch(`https://klwp.pro/api/pages/${page}.json`);

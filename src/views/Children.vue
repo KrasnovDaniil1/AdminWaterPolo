@@ -10,57 +10,93 @@ export default {
     components: { Trainers, Groups, Price },
     setup() {
         const store = useStore();
+        const page = "pageChildren";
+
         onMounted(async () => {
-            await store.dispatch("actPageChildren");
+            await store.dispatch("actPage", "pageChildren");
         });
-        let deleteTreners = (id) => {
-            console.log("Удаление тренера", {
-                page: "Children",
+
+        let deleteTrainer = (id) => {
+            console.log("Удаление тренера в Children", id);
+            store.dispatch("actDeleteTrainer", {
+                page: page,
                 id: id,
             });
         };
-        let addTreners = (info) => {
-            console.log("Добавление тренера", {
-                page: "Children",
-                info: info,
+        let changeTrainer = (id, item) => {
+            console.log("Редактирование тренера в Children", id, item);
+            store.dispatch("actChangeTrainer", {
+                page: page,
+                id,
+                item,
+            });
+        };
+        let addTrainer = (item) => {
+            console.log("Добавление тренера в Children", item);
+            store.dispatch("actAddTrainer", {
+                page: page,
+                item,
             });
         };
 
         let deleteGroup = (id) => {
-            console.log("Удаление группы", {
-                page: "Children",
+            console.log("Удаление группы в Children", id);
+            store.dispatch("actDeleteGroup", {
+                page: page,
                 id: id,
             });
         };
-        let addGroup = (info) => {
-            console.log("Добавление группы", {
-                page: "Children",
-                info: info,
+        let changeGroup = (id, item) => {
+            console.log("Редактирование группы в Children", id, item);
+            store.dispatch("actChangeGroup", {
+                page: page,
+                id,
+                item,
+            });
+        };
+        let addGroup = (item) => {
+            console.log("Добавление группы в Children", item);
+            store.dispatch("actAddGroup", {
+                page: page,
+                item,
             });
         };
 
         let deletePrice = (id) => {
-            console.log("Удаление цен:", {
-                page: "Children",
+            console.log("Удаление цен в Children", id);
+            store.dispatch("actDeletePrice", {
+                page: page,
                 id: id,
             });
         };
-        let addPrice = (info) => {
-            console.log("Добавление цен:", {
-                page: "Children",
-                info: info,
+        let changePrice = (id, item) => {
+            console.log("Редактирование цен в Children", id, item);
+            store.dispatch("actChangePrice", {
+                page: page,
+                id,
+                item,
+            });
+        };
+        let addPrice = (item) => {
+            console.log("Добавление цен в Children", item);
+            store.dispatch("actAddPrice", {
+                page: page,
+                item,
             });
         };
 
         return {
-            deleteTreners,
-            addTreners,
+            deleteTrainer,
+            changeTrainer,
+            addTrainer,
             deleteGroup,
+            changeGroup,
             addGroup,
-            addPrice,
             deletePrice,
+            changePrice,
+            addPrice,
             store,
-            pageAmateur: computed(() => store.getters.getPageChildren),
+            pageChildren: computed(() => store.getters.getPageChildren),
         };
     },
 };
@@ -68,26 +104,24 @@ export default {
 
 <template>
     <section>
+        <h2 class="text-center">Дети</h2>
         <Trainers
-            :trainers="pageAmateur.trainers"
-            @parentsDeleteTreners="deleteTreners"
-            @parentAddTreners="addTreners"
+            :trainers="pageChildren.trainers"
+            @parentDeleteTrainer="deleteTrainer"
+            @parentChangeTrainer="changeTrainer"
+            @parentAddTrainer="addTrainer"
         />
         <Groups
-            :groups="pageAmateur.groups"
-            @parentsDeleteGroup="deleteGroup"
+            :groups="pageChildren.groups"
+            @parentDeleteGroup="deleteGroup"
+            @parentChangeGroup="changeGroup"
             @parentAddGroup="addGroup"
         />
         <Price
-            :price="pageAmateur.price"
-            @parentsDeletePrice="deletePrice"
+            :price="pageChildren.price"
+            @parentDeletePrice="deletePrice"
+            @parentChangePrice="changePrice"
             @parentAddPrice="addPrice"
         />
     </section>
 </template>
-
-<style lang="scss" scoped>
-section {
-    // background: red;
-}
-</style>

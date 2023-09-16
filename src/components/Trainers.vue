@@ -17,14 +17,25 @@ export default {
         const saveActive = ref("none");
         const modelActive = ref(false);
 
+        const clearNewTrainer = () => {
+            newTrainer.value = {
+                src: "",
+                name: "",
+                phone_number: "",
+                rank: "",
+            };
+        };
+
         const changeTrainer = (id) => {
             context.emit("parentChangeTrainer", id, newTrainer.value);
             saveActive.value = "none";
+            clearNewTrainer();
         };
 
         const addTrainer = () => {
             context.emit("parentAddTrainer", newTrainer.value);
             modelActive.value = false;
+            clearNewTrainer();
         };
 
         return {

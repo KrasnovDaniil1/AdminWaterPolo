@@ -10,6 +10,7 @@ const state = {
     pageFederation: {},
     pageNews: {},
     pageMedio: {},
+    loader: false,
 };
 
 const store = createStore({

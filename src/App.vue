@@ -1,11 +1,21 @@
 <script>
 import Header from "./components/Header.vue";
+import Loader from "./components/Loader.vue";
+import { useStore } from "vuex";
+import { computed } from "@vue/runtime-core";
 
 export default {
     components: {
         Header,
+        Loader,
     },
-    setup() {},
+    setup() {
+        const store = useStore();
+        return {
+            store,
+            loader: computed(() => store.getters.getLoader),
+        };
+    },
 };
 </script>
 
@@ -13,6 +23,7 @@ export default {
     <div class="app">
         <Header />
         <RouterView class="router_view" />
+        <Loader :loader="loader" />
     </div>
 </template>
 

@@ -4,47 +4,73 @@ import { useStore } from "vuex";
 
 import Trainers from "../components/Trainers.vue";
 import Groups from "../components/Groups.vue";
+import Price from "../components/Price.vue";
 
 export default {
-    components: { Trainers, Groups },
+    components: { Trainers, Groups, Price },
     setup() {
         const store = useStore();
+        const page = "pageStudent";
+
         onMounted(async () => {
-            await store.dispatch("actPageStudent");
+            await store.dispatch("actPage", "pageStudent");
         });
-        let deleteTreners = (id) => {
-            console.log("Удаление тренера", {
-                page: "Student",
+
+        let deleteTrainer = (id) => {
+            console.log("Удаление тренера в Student", id);
+            store.dispatch("actDeleteTrainer", {
+                page: page,
                 id: id,
             });
         };
-        let addTreners = (info) => {
-            console.log("Добавление тренера", {
-                page: "Student",
-                info: info,
+        let changeTrainer = (id, item) => {
+            console.log("Редактирование тренера в Student", id, item);
+            store.dispatch("actChangeTrainer", {
+                page: page,
+                id,
+                item,
+            });
+        };
+        let addTrainer = (item) => {
+            console.log("Добавление тренера в Student", item);
+            store.dispatch("actAddTrainer", {
+                page: page,
+                item,
             });
         };
 
         let deleteGroup = (id) => {
-            console.log("Удаление группы", {
-                page: "Student",
+            console.log("Удаление группы в Student", id);
+            store.dispatch("actDeleteGroup", {
+                page: page,
                 id: id,
             });
         };
-        let addGroup = (info) => {
-            console.log("Добавление группы", {
-                page: "Student",
-                info: info,
+        let changeGroup = (id, item) => {
+            console.log("Редактирование группы в Student", id, item);
+            store.dispatch("actChangeGroup", {
+                page: page,
+                id,
+                item,
+            });
+        };
+        let addGroup = (item) => {
+            console.log("Добавление группы в Student", item);
+            store.dispatch("actAddGroup", {
+                page: page,
+                item,
             });
         };
 
         return {
-            deleteTreners,
-            addTreners,
+            deleteTrainer,
+            changeTrainer,
+            addTrainer,
             deleteGroup,
+            changeGroup,
             addGroup,
             store,
-            pageAmateur: computed(() => store.getters.getPageStudent),
+            pageStudent: computed(() => store.getters.getPageStudent),
         };
     },
 };
@@ -52,21 +78,18 @@ export default {
 
 <template>
     <section>
+        <h2 class="text-center">Студенты</h2>
         <Trainers
-            :trainers="pageAmateur.trainers"
-            @parentsDeleteTreners="deleteTreners"
-            @parentAddTreners="addTreners"
+            :trainers="pageStudent.trainers"
+            @parentDeleteTrainer="deleteTrainer"
+            @parentChangeTrainer="changeTrainer"
+            @parentAddTrainer="addTrainer"
         />
         <Groups
-            :groups="pageAmateur.groups"
-            @parentsDeleteGroup="deleteGroup"
+            :groups="pageStudent.groups"
+            @parentDeleteGroup="deleteGroup"
+            @parentChangeGroup="changeGroup"
             @parentAddGroup="addGroup"
         />
     </section>
 </template>
-
-<style lang="scss" scoped>
-section {
-    // background: red;
-}
-</style>

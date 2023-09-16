@@ -3,32 +3,49 @@ import { computed, onMounted } from "@vue/runtime-core";
 import { useStore } from "vuex";
 
 import Trainers from "../components/Trainers.vue";
+import Groups from "../components/Groups.vue";
+import Price from "../components/Price.vue";
 
 export default {
-    components: { Trainers },
+    components: { Trainers, Groups, Price },
     setup() {
         const store = useStore();
+        const page = "pageFederation";
+
         onMounted(async () => {
-            await store.dispatch("actPageFederation");
+            await store.dispatch("actPage", "pageFederation");
         });
-        let deleteTreners = (id) => {
-            console.log("Удаление тренера", {
-                page: "Amateur",
+
+        let deleteTrainer = (id) => {
+            console.log("Удаление тренера в Federation", id);
+            store.dispatch("actDeleteTrainer", {
+                page: page,
                 id: id,
             });
         };
-        let addTreners = (info) => {
-            console.log("Добавление тренера", {
-                page: "Amateur",
-                info: info,
+        let changeTrainer = (id, item) => {
+            console.log("Редактирование тренера в Federation", id, item);
+            store.dispatch("actChangeTrainer", {
+                page: page,
+                id,
+                item,
+            });
+        };
+        let addTrainer = (item) => {
+            console.log("Добавление тренера в Federation", item);
+            store.dispatch("actAddTrainer", {
+                page: page,
+                item,
             });
         };
 
         return {
-            deleteTreners,
-            addTreners,
+            deleteTrainer,
+            changeTrainer,
+            addTrainer,
+
             store,
-            pageAmateur: computed(() => store.getters.getPageFederation),
+            pageFederation: computed(() => store.getters.getPageFederation),
         };
     },
 };
@@ -36,16 +53,12 @@ export default {
 
 <template>
     <section>
+        <h2 class="text-center">Федерация</h2>
         <Trainers
-            :trainers="pageAmateur.trainers"
-            @parentsDeleteTreners="deleteTreners"
-            @parentAddTreners="addTreners"
+            :trainers="pageFederation.trainers"
+            @parentDeleteTrainer="deleteTrainer"
+            @parentChangeTrainer="changeTrainer"
+            @parentAddTrainer="addTrainer"
         />
     </section>
 </template>
-
-<style lang="scss" scoped>
-section {
-    // background: red;
-}
-</style>

@@ -26,7 +26,7 @@ export default {
 
         const clearNewGroup = () => {
             newGroup.value = {
-                title: "Группа 1",
+                title: "",
                 data: ["-", "-", "-", "-", "-", "-", "-"],
             };
         };
@@ -44,6 +44,7 @@ export default {
         const addGroup = () => {
             context.emit("parentAddGroup", newGroup.value);
             modelActive.value = false;
+            clearNewGroup();
         };
 
         return {

@@ -2,154 +2,153 @@
 import { ref } from "vue";
 export default {
     props: {
-        price: [],
+        price: {
+            type: Array,
+        },
     },
     setup(props, context) {
         const modelActive = ref(false);
+        const saveActive = ref("none");
         const newPrice = ref({
             title: "",
-            price: [],
+            price: "",
         });
-        const parentAddPrice = () => {
+
+        const clearNewPrice = () => {
+            newPrice.value = {
+                title: "",
+                price: "",
+            };
+        };
+        const changePrice = (id) => {
+            context.emit("parentChangePrice", id, newPrice.value);
+            saveActive.value = "none";
+            clearNewPrice();
+        };
+
+        const addPrice = () => {
             context.emit("parentAddPrice", newPrice.value);
             modelActive.value = false;
+            clearNewPrice();
         };
         return {
             modelActive,
+            saveActive,
             newPrice,
-            parentAddPrice,
+            clearNewPrice,
+            changePrice,
+            addPrice,
         };
     },
 };
 </script>
 
 <template>
-    <div class="price">
-        <div class="title">
-            <h1>Цена:</h1>
-            <button @click="modelActive = true">+ Добавить</button>
-        </div>
-        <nav v-for="item in price" :key="item.id">
-            <table class="price_table">
-                <h1>{{ item.title }}</h1>
-                <div class="table_block">
-                    <tr>
-                        <th>
-                            {{ item.price }}
-                        </th>
-                    </tr>
-                </div>
-            </table>
-            <button @click="$emit('parentsDeletePrice', item.id)">
-                - Удалить
+    <div class="trainers">
+        <div class="d-flex justify-content-between align-items-start">
+            <h4>Цены:</h4>
+            <button
+                type="button"
+                class="btn btn-outline-primary"
+                @click="modelActive = true"
+            >
+                + Добавить
             </button>
-        </nav>
-        <div class="model" v-if="modelActive">
-            <button class="model_btn" @click="modelActive = false">+</button>
-            <nav class="model_block">
-                <label>
-                    <h1>Название группы:</h1>
-                    <input v-model="newPrice.title" placeholder="Группа 1" />
-                </label>
-                <label>
-                    <h1>Цена:</h1>
-                    <input type="number" v-model="newPrice.price" placeholder="700" />
-                </label>
-
-                <button @click="parentAddPrice">Сохранить</button>
-            </nav>
+        </div>
+        <div class="model bg-main row py-3 my-2 br-10" v-if="modelActive">
+            <label class="d-flex col-5">
+                <span class="input-group-text">Предназначение:</span>
+                <input
+                    type="text"
+                    class="form-control"
+                    v-model="newPrice.title"
+                />
+            </label>
+            <label class="d-flex col-3">
+                <span class="input-group-text">Цена:</span>
+                <input
+                    type="number"
+                    class="form-control"
+                    v-model="newPrice.price"
+                />
+            </label>
+            <div class="d-flex justify-content-end col-4">
+                <button
+                    type="button"
+                    class="btn btn-outline-primary mx-2"
+                    @click="addPrice"
+                >
+                    Сохранить
+                </button>
+                <button
+                    type="button"
+                    class="btn btn-outline-danger"
+                    @click="modelActive = false"
+                >
+                    Отменить
+                </button>
+            </div>
+        </div>
+        <div
+            class="row bg-main py-2 my-3 br-10"
+            v-for="(item, index) in price"
+            :key="index"
+        >
+            <label class="d-flex col-5">
+                <span class="input-group-text">Предназначение:</span>
+                <input
+                    type="text"
+                    class="form-control"
+                    :value="item.title"
+                    @change="newPrice.title = $event.target.value"
+                    :disabled="saveActive != index"
+                />
+            </label>
+            <label class="d-flex col-3">
+                <span class="input-group-text">Цена:</span>
+                <input
+                    type="number"
+                    class="form-control"
+                    :value="item.price"
+                    @change="newPrice.price = $event.target.value"
+                    :disabled="saveActive != index"
+                />
+            </label>
+            <div
+                class="d-flex justify-content-end col-4"
+                v-if="saveActive == index"
+            >
+                <button
+                    type="button"
+                    class="btn btn-outline-primary mx-2"
+                    @click="changePrice(index)"
+                >
+                    Сохранить
+                </button>
+                <button
+                    type="button"
+                    class="btn btn-outline-danger"
+                    @click="saveActive = 'none'"
+                >
+                    Отменить
+                </button>
+            </div>
+            <div class="d-flex justify-content-end col-4" v-else>
+                <button
+                    type="button"
+                    class="btn btn-outline-success mx-2"
+                    @click="saveActive = index"
+                >
+                    Редактировать
+                </button>
+                <button
+                    type="button"
+                    class="btn btn-outline-danger"
+                    @click="$emit('parentDeletePrice', index)"
+                >
+                    Удалить
+                </button>
+            </div>
         </div>
     </div>
 </template>
-
-<style lang="scss" scoped>
-.price {
-    .title {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        h1 {
-            font-size: var(--size-title);
-            text-transform: uppercase;
-        }
-        button {
-            background: rgb(72, 0, 255);
-        }
-    }
-    nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        .price_table {
-            padding: 1rem 0;
-            display: grid;
-            grid-template-columns: 1fr;
-            h1 {
-                padding: 0.5rem;
-                text-align: center;
-                background: var(--bg-primary);
-                font-size: var(--size-title);
-                color: var(--color-secondary);
-                font-weight: bold;
-            }
-            .table_block {
-                display: grid;
-                font-size: var(--size-elem);
-                tr {
-                    display: flex;
-                    flex-direction: column;
-                    text-align: center;
-                    th,
-                    td {
-                        border: 1px solid var(--bg-primary);
-                        padding: 0.5rem;
-                    }
-                }
-            }
-        }
-    }
-    .model {
-        position: fixed;
-        top: 0;
-        left: 0;
-        background: rgba(1, 1, 1, 0.5);
-        width: 100%;
-        height: 100vh;
-        .model_btn {
-            position: absolute;
-            width: 4rem;
-            height: 4rem;
-            top: 1rem;
-            right: 1rem;
-            font-size: 50px;
-            background: var(--bg-primary);
-            transform: rotate(45deg);
-        }
-        .model_block {
-            position: relative;
-            width: fit-content;
-            top: 50%;
-            left: 50%;
-            display: flex;
-            flex-direction: column;
-
-            transform: translate(-50%, -50%);
-            background: var(--bg-primary);
-            border-radius: 10px;
-            padding: 1rem;
-            h1 {
-                color: var(--color-secondary);
-            }
-            input {
-                background: var(--bg-secondary);
-            }
-            label {
-                margin-bottom: 0.5rem;
-            }
-            button {
-                background: rgb(25, 0, 255);
-            }
-        }
-    }
-}
-</style>

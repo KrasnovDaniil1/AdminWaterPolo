@@ -4,59 +4,83 @@ import { useStore } from "vuex";
 
 import Trainers from "../components/Trainers.vue";
 import Groups from "../components/Groups.vue";
-// import Price from "../components/Price.vue";
+import Price from "../components/Price.vue";
 
 export default {
-    components: { Trainers, Groups },
+    components: { Trainers, Groups, Price },
     setup() {
         const store = useStore();
+        const page = "pageAmateur";
 
         onMounted(async () => {
-            await store.dispatch("actPageAmateur");
+            await store.dispatch("actPage", "pageAmateur");
         });
 
         let deleteTrainer = (id) => {
             console.log("Удаление тренера в Amateur", id);
             store.dispatch("actDeleteTrainer", {
-                page: "pageAmateur",
+                page: page,
                 id: id,
             });
         };
         let changeTrainer = (id, item) => {
             console.log("Редактирование тренера в Amateur", id, item);
-            store.commit("mutChangeTrainer", {
-                page: "pageAmateur",
+            store.dispatch("actChangeTrainer", {
+                page: page,
                 id,
                 item,
             });
         };
         let addTrainer = (item) => {
             console.log("Добавление тренера в Amateur", item);
-            store.commit("mutAddTrainer", {
-                page: "pageAmateur",
+            store.dispatch("actAddTrainer", {
+                page: page,
                 item,
             });
         };
 
         let deleteGroup = (id) => {
             console.log("Удаление группы в Amateur", id);
-            store.commit("mutDeleteGroup", {
-                page: "pageAmateur",
+            store.dispatch("actDeleteGroup", {
+                page: page,
                 id: id,
             });
         };
         let changeGroup = (id, item) => {
             console.log("Редактирование группы в Amateur", id, item);
-            store.commit("mutChangeGroup", {
-                page: "pageAmateur",
+            store.dispatch("actChangeGroup", {
+                page: page,
                 id,
                 item,
             });
         };
         let addGroup = (item) => {
             console.log("Добавление группы в Amateur", item);
-            store.commit("mutAddGroup", {
-                page: "pageAmateur",
+            store.dispatch("actAddGroup", {
+                page: page,
+                item,
+            });
+        };
+
+        let deletePrice = (id) => {
+            console.log("Удаление цен в Amateur", id);
+            store.dispatch("actDeletePrice", {
+                page: page,
+                id: id,
+            });
+        };
+        let changePrice = (id, item) => {
+            console.log("Редактирование цен в Amateur", id, item);
+            store.dispatch("actChangePrice", {
+                page: page,
+                id,
+                item,
+            });
+        };
+        let addPrice = (item) => {
+            console.log("Добавление цен в Amateur", item);
+            store.dispatch("actAddPrice", {
+                page: page,
                 item,
             });
         };
@@ -68,6 +92,9 @@ export default {
             deleteGroup,
             changeGroup,
             addGroup,
+            deletePrice,
+            changePrice,
+            addPrice,
             store,
             pageAmateur: computed(() => store.getters.getPageAmateur),
         };
@@ -90,10 +117,11 @@ export default {
             @parentChangeGroup="changeGroup"
             @parentAddGroup="addGroup"
         />
-        <!-- <Price
+        <Price
             :price="pageAmateur.price"
-            @parentsDeletePrice="deletePrice"
+            @parentDeletePrice="deletePrice"
+            @parentChangePrice="changePrice"
             @parentAddPrice="addPrice"
-        /> -->
+        />
     </section>
 </template>
