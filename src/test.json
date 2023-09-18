@@ -1,62 +1,28 @@
 {
-    "trainers": [
+    "medio": [
         {
-            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Bianchi_velez.jpg/170px-Bianchi_velez.jpg",
-            "name": "Иван Иванович Иванов",
-            "rank": "Помошник тренера",
-            "phone_number": "+79990001122"
-        },
-        {
-            "src": "https://img.championat.com/s/735x490/news/big/i/n/sekrety-fitnesa-kak-vybrat-trenera-i-sostavit-trenirovochnyj-plan-samomu_156196697645614984.jpg",
-            "name": "Пётр Петрович Петров",
-            "rank": "Шлавный тренер",
-            "phone_number": "+79991110022"
-        },
-        {
-            "src": "https://hb.bizmrg.com/st.mosmff.ru/news/60/6008265009926_606x451.jpg",
-            "name": "Глеб Глебыч Глебов",
-            "rank": "Тренер",
-            "phone_number": "+79992221100"
-        }
-    ],
-    "groups": [
-        {
-            "title": "Группа 1",
-            "data": [
-                "12.00-13.00",
-                "12.00-13.00",
-                "12.00-13.00",
-                "12.00-13.00",
-                "12.00-13.00",
-                "12.00-13.00",
-                "12.00-13.00"
+            "title": "Спартакиада",
+            "time": "26.02.2022 - 28.02.2022",
+            "place": "г. Калининград, ул. Чайковского",
+            "msg": "Что начало повседневной работы по формированию позиции требуют от нас анализа системы обучения кадров, соответствует насущным потребностям. Повседневная практика показывает, что консультация с широким активом требуют от нас анализа существенных финансовых и административных условий. Не следует, однако забывать, что новая модель организационной деятельности обеспечивает широкому кругу (специалистов) у",
+            "images": [
+                "https://i-fakt.ru/wp-content/uploads/2020/02/fakty-vodnoe-polo.jpg",
+                "https://sportstar.by/upload/medialibrary/da4/da47bef974f1b41d05e60c334c756b27.jpg",
+                "https://luxsolsport.ru/images/article/narusheniya-v-vaterpole.jpg",
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzIMRVRYzKfuKk3qmJ6iZGx3jenj-GvnOPbw&usqp=CAU"
             ]
         },
         {
-            "title": "Группа 2",
-            "data": [
-                "-",
-                "12.00-13.00",
-                "12.00-13.00",
-                "12.00-13.00",
-                "-",
-                "12.00-13.00",
-                "12.00-13.00"
+            "title": "Спартакиада",
+            "time": "26.02.2022 - 28.02.2022",
+            "place": "г. Калининград, ул. Чайковского",
+            "msg": "Что начало повседневной работы по формированию позиции требуют от нас анализа системы обучения кадров, соответствует насущным потребностям. Повседневная практика показывает, что консультация с широким активом требуют от нас анализа существенных финансовых и административных условий. Не следует, однако забывать, что новая модель организационной деятельности обеспечивает широкому кругу (специалистов) у",
+            "images": [
+                "https://i-fakt.ru/wp-content/uploads/2020/02/fakty-vodnoe-polo.jpg",
+                "https://sportstar.by/upload/medialibrary/da4/da47bef974f1b41d05e60c334c756b27.jpg",
+                "https://luxsolsport.ru/images/article/narusheniya-v-vaterpole.jpg",
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzIMRVRYzKfuKk3qmJ6iZGx3jenj-GvnOPbw&usqp=CAU"
             ]
-        }
-    ],
-    "price": [
-        {
-            "title": "Разовое занятие в будни",
-            "price": "700"
-        },
-        {
-            "title": "Разовое занятие в выходные",
-            "price": "800"
-        },
-        {
-            "title": "Абонемент на месяц",
-            "price": "3200"
         }
     ]
 }
