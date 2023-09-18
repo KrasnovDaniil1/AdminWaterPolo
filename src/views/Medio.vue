@@ -3,16 +3,17 @@ import AllImages from "../components/AllImages.vue";
 
 import { computed, onMounted, ref } from "@vue/runtime-core";
 import { useStore } from "vuex";
-// import { QuillEditor } from "@vueup/vue-quill";
-// import "@vueup/vue-quill/dist/vue-quill.snow.css";
+import { QuillEditor } from "@vueup/vue-quill";
+
+import "@vueup/vue-quill/dist/vue-quill.snow.css";
 export default {
     components: {
         AllImages,
-        // QuillEditor,
+        QuillEditor,
     },
     setup() {
         const store = useStore();
-        const page = "pageAmateur";
+        const page = "pageMedio";
         const saveActive = ref("none");
         const modelActive = ref(false);
 
@@ -21,22 +22,23 @@ export default {
             time: "",
             place: "",
             msg: "",
-            images: [],
+            oldImages: [],
+            newImages: [],
         });
-        const oldImage = ref([]);
-        const newImage = ref([]);
 
         const changeNewImage = (items) => {
-            newImage.value = items;
-            console.log("Новые картинки", newImage.value);
+            console.log("Новые картинки", items);
+            newMedio.value.newImages = items;
         };
         const changeOldImage = (items) => {
-            oldImage.value = items;
-            console.log("Старые картинки", oldImage.value);
+            console.log("Старые картинки", items);
+            newMedio.value.oldImages = items;
         };
 
-        const changeMedio = () => {
-            console.log(newImage.value, oldImage, value);
+        const changeMedio = (id) => {
+            console.log("Отправляю", page, id, newMedio.value);
+            store.dispatch("actChangeMedio", newMedio.value);
+            saveActive.value = "none";
         };
 
         onMounted(async () => {
@@ -47,8 +49,7 @@ export default {
             store,
             saveActive,
             modelActive,
-            oldImage,
-            newImage,
+            page,
             changeNewImage,
             changeOldImage,
             changeMedio,
@@ -74,16 +75,16 @@ export default {
         <div
             v-for="(item, index) in pageMedio.medio"
             :key="index"
-            class="bg-main p-1 my-3 br-10"
+            class="bg-main p-1 my-5 br-10"
         >
             <nav
-                class="d-flex justify-content-evenly col-12 my-3"
+                class="d-flex justify-content-evenly col-12 my-2"
                 v-if="saveActive == index"
             >
                 <button
                     type="button"
                     class="btn btn-outline-primary"
-                    @click="changeMedio"
+                    @click="changeMedio(index)"
                 >
                     Сохранить
                 </button>
@@ -95,7 +96,7 @@ export default {
                     Отменить
                 </button>
             </nav>
-            <nav class="d-flex justify-content-evenly col-12 my-3" v-else>
+            <nav class="d-flex justify-content-evenly col-12 my-2" v-else>
                 <button
                     type="button"
                     class="btn btn-outline-success"
@@ -107,7 +108,54 @@ export default {
                     Удалить
                 </button>
             </nav>
+            <div class="d-flex p-3">
+                <label class="d-flex col-5">
+                    <span class="input-group-text">Заголовок:</span>
+                    <input
+                        type="text"
+                        class="form-control"
+                        :disabled="saveActive != index"
+                        :value="item.title"
+                        @change="newMedio.title = $event.target.value"
+                    />
+                </label>
+                <label class="d-flex col-3 px-3">
+                    <span class="input-group-text">Дата:</span>
+                    <input
+                        type="text"
+                        class="form-control"
+                        :disabled="saveActive != index"
+                        :value="item.time"
+                        @change="newMedio.time = $event.target.value"
+                    />
+                </label>
+                <label class="d-flex col-4">
+                    <span class="input-group-text">Место:</span>
+                    <input
+                        type="text"
+                        class="form-control"
+                        :disabled="saveActive != index"
+                        :value="item.place"
+                        @change="newMedio.place = $event.target.value"
+                    />
+                </label>
+            </div>
+            <div
+                class="bg-light mx-3 p-2 br-10"
+                v-html="item.msg"
+                v-if="saveActive != index"
+            ></div>
 
+            <QuillEditor
+                v-if="saveActive == index"
+                theme="snow"
+                toolbar="essential"
+                style="height: 300px"
+                class="bg-light fs-5"
+                contentType="html"
+                :content="item.msg"
+                v-model:content="newMedio.msg"
+            />
             <AllImages
                 :activeChange="saveActive == index"
                 :images="item.images"
@@ -115,26 +163,5 @@ export default {
                 @parentOldImage="changeOldImage"
             />
         </div>
-        <!-- <nav class="d-flex my-3">
-            <label class="d-flex col-4">
-                <span class="input-group-text">Заголовок:</span>
-                <input type="text" class="form-control" />
-            </label>
-            <label class="d-flex col-4 px-3">
-                <span class="input-group-text">Дата:</span>
-                <input type="text" class="form-control" />
-            </label>
-            <label class="d-flex col-4">
-                <span class="input-group-text">Место:</span>
-                <input type="text" class="form-control" />
-            </label>
-        </nav>
-        <QuillEditor
-            theme="snow"
-            toolbar="essential"
-            style="height: 500px"
-            :readOnly="false"
-            v-model:content="newMedio.images"
-        /> -->
     </section>
 </template>

@@ -9,13 +9,18 @@ export default {
         const previewImage = ref([]);
         const newImage = ref([]);
         const oldImage = ref(props.images);
+
         const showPreview = (e) => {
             if (e.target.files.length > 0) {
                 for (const key in e.target.files) {
-                    previewImage.value.push(
-                        URL.createObjectURL(e.target.files[key])
-                    );
                     newImage.value.push(e.target.files[key]);
+                    const file = e.target.files[key];
+                    const reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onload = function (e) {
+                        previewImage.value.push(e.target.result);
+                    };
+                    context.emit("parentNewImage", newImage.value);
                 }
             }
         };
@@ -41,10 +46,11 @@ export default {
 </script>
 
 <template>
-    <div class="d-flex flex-wrap">
+    <div class="d-flex flex-wrap m-3">
         <input
             type="file"
             class="form-control col-12"
+            accept="image/*"
             :disabled="!activeChange"
             @change="showPreview"
             multiple

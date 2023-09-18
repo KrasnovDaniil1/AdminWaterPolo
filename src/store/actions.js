@@ -78,6 +78,25 @@ export const actChangePrice = async ({ commit, state }, { page, id, item }) => {
     commit("mutLoader", false);
 };
 
+// редактирование медио
+export const actChangeMedio = async ({ commit, state }, { item }) => {
+    commit("mutLoader", true);
+    console.log("actChangeMedio", item);
+    // let src = "";
+    // if (item.oldImages != "") {
+    //     src = await api.UploadImg(item.oldImages);
+    //     item.oldImages = src;
+    //     console.log("Изменил", item.oldImages);
+    // }
+    // for (let key in item) {
+    //     if (item[key] != "") {
+    //         state[page].trainers[id][key] = item[key];
+    //     }
+    // }
+    // state[page] = await api.UploadPage(page, state[page]);
+    commit("mutLoader", false);
+};
+
 // добавление тренера
 export const actAddTrainer = async ({ commit, state }, { page, item }) => {
     commit("mutLoader", true);

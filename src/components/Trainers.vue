@@ -67,6 +67,7 @@ export default {
             <nav class="d-flex flex-column justify-content-between col-8">
                 <input
                     type="file"
+                    accept="image/*"
                     class="form-control my-2"
                     @change="newTrainer.src = $event.target.files[0]"
                 />
