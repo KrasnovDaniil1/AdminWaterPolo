@@ -3,7 +3,14 @@ let auth =
 
 export const UploadImg = async (src) => {
     let form = new FormData();
-    form.append("files[]", src);
+    console.log("api", src);
+    if (src.length > 0) {
+        for (let item of src) {
+            form.append("files[]", item);
+        }
+    } else {
+        form.append("files[]", src);
+    }
     let response = await fetch("https://klwp.pro/api/upload.php", {
         method: "POST",
         headers: {
@@ -12,6 +19,7 @@ export const UploadImg = async (src) => {
         body: form,
     });
     let data = await response.json();
+    // console.log("api", data);
     return data.links;
 };
 
@@ -29,7 +37,6 @@ export const UploadPage = async (page, kod) => {
     let data = await response.json();
     return data;
 };
-
 
 export const Page = async (page) => {
     let response = await fetch(`https://klwp.pro/api/pages/${page}.json`);

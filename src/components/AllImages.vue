@@ -12,16 +12,16 @@ export default {
 
         const showPreview = (e) => {
             if (e.target.files.length > 0) {
-                for (const key in e.target.files) {
-                    newImage.value.push(e.target.files[key]);
-                    const file = e.target.files[key];
+                for (let item of e.target.files) {
+                    newImage.value.push(item);
+                    const file = item;
                     const reader = new FileReader();
                     reader.readAsDataURL(file);
-                    reader.onload = function (e) {
-                        previewImage.value.push(e.target.result);
+                    reader.onload = function (i) {
+                        previewImage.value.push(i.target.result);
                     };
-                    context.emit("parentNewImage", newImage.value);
                 }
+                context.emit("parentNewImage", newImage.value);
             }
         };
         const deleteOldImage = (id) => {

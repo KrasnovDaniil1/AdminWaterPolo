@@ -27,18 +27,48 @@ export default {
         });
 
         const changeNewImage = (items) => {
-            console.log("Новые картинки", items);
             newMedio.value.newImages = items;
         };
         const changeOldImage = (items) => {
-            console.log("Старые картинки", items);
             newMedio.value.oldImages = items;
         };
 
         const changeMedio = (id) => {
-            console.log("Отправляю", page, id, newMedio.value);
-            store.dispatch("actChangeMedio", newMedio.value);
+            store.dispatch("actChangeMedio", {
+                id,
+                page,
+                item: newMedio.value,
+            });
             saveActive.value = "none";
+            clearNewMedio();
+        };
+
+        const deleteMedio = (id) => {
+            store.dispatch("actDeleteMedio", {
+                id,
+                page,
+            });
+            saveActive.value = "none";
+            clearNewMedio();
+        };
+
+        const addMedio = () => {
+            store.dispatch("actAddMedio", {
+                page,
+                item: newMedio.value,
+            });
+            modelActive.value = false;
+            clearNewMedio();
+        };
+        const clearNewMedio = () => {
+            newMedio.value = {
+                title: "",
+                time: "",
+                place: "",
+                msg: "",
+                oldImages: [],
+                newImages: [],
+            };
         };
 
         onMounted(async () => {
@@ -50,9 +80,12 @@ export default {
             saveActive,
             modelActive,
             page,
+            clearNewMedio,
             changeNewImage,
             changeOldImage,
             changeMedio,
+            deleteMedio,
+            addMedio,
             pageMedio: computed(() => store.getters.getPageMedio),
         };
     },
@@ -71,7 +104,63 @@ export default {
                 + Добавить
             </button>
         </div>
-        <div class="model"></div>
+        <div class="model bg-main p-1 my-5 br-10" v-if="modelActive">
+            <nav class="d-flex justify-content-evenly col-12 my-2">
+                <button
+                    type="button"
+                    class="btn btn-outline-primary"
+                    @click="addMedio()"
+                >
+                    Сохранить
+                </button>
+                <button
+                    type="button"
+                    class="btn btn-outline-danger"
+                    @click="modelActive = false"
+                >
+                    Отменить
+                </button>
+            </nav>
+            <div class="d-flex p-3">
+                <label class="d-flex col-5">
+                    <span class="input-group-text">Заголовок:</span>
+                    <input
+                        type="text"
+                        class="form-control"
+                        v-model="newMedio.title"
+                    />
+                </label>
+                <label class="d-flex col-3 px-3">
+                    <span class="input-group-text">Дата:</span>
+                    <input
+                        type="text"
+                        class="form-control"
+                        v-model="newMedio.time"
+                    />
+                </label>
+                <label class="d-flex col-4">
+                    <span class="input-group-text">Место:</span>
+                    <input
+                        type="text"
+                        class="form-control"
+                        v-model="newMedio.place"
+                    />
+                </label>
+            </div>
+            <QuillEditor
+                theme="snow"
+                toolbar="essential"
+                style="height: 300px"
+                class="bg-light fs-5"
+                contentType="html"
+                v-model:content="newMedio.msg"
+            />
+            <AllImages
+                :activeChange="true"
+                @parentNewImage="changeNewImage"
+                @parentOldImage="changeOldImage"
+            />
+        </div>
         <div
             v-for="(item, index) in pageMedio.medio"
             :key="index"
@@ -104,7 +193,11 @@ export default {
                 >
                     Редактировать
                 </button>
-                <button type="button" class="btn btn-outline-danger">
+                <button
+                    type="button"
+                    class="btn btn-outline-danger"
+                    @click="deleteMedio(index)"
+                >
                     Удалить
                 </button>
             </nav>

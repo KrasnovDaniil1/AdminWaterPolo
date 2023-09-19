@@ -34,6 +34,13 @@ export const actDeletePrice = async ({ commit, state }, { page, id }) => {
     commit("mutLoader", false);
 };
 
+export const actDeleteMedio = async ({ commit, state }, { page, id }) => {
+    commit("mutLoader", true);
+    state[page].medio.splice(id, 1);
+    state[page] = await api.UploadPage(page, state[page]);
+    commit("mutLoader", false);
+};
+
 // редактирование тренера
 export const actChangeTrainer = async (
     { commit, state },
@@ -79,21 +86,23 @@ export const actChangePrice = async ({ commit, state }, { page, id, item }) => {
 };
 
 // редактирование медио
-export const actChangeMedio = async ({ commit, state }, { item }) => {
+export const actChangeMedio = async ({ commit, state }, { id, page, item }) => {
     commit("mutLoader", true);
-    console.log("actChangeMedio", item);
-    // let src = "";
-    // if (item.oldImages != "") {
-    //     src = await api.UploadImg(item.oldImages);
-    //     item.oldImages = src;
-    //     console.log("Изменил", item.oldImages);
-    // }
-    // for (let key in item) {
-    //     if (item[key] != "") {
-    //         state[page].trainers[id][key] = item[key];
-    //     }
-    // }
-    // state[page] = await api.UploadPage(page, state[page]);
+    let src = [];
+    if (item.newImages != []) {
+        src = await api.UploadImg([...item.newImages]);
+        item.images = [...src, ...item.oldImages];
+    } else {
+        item.images = [...item.oldImages];
+    }
+    delete item.newImages;
+    delete item.oldImages;
+    for (let key in item) {
+        if (item[key] != "") {
+            state[page].medio[id][key] = item[key];
+        }
+    }
+    state[page] = await api.UploadPage(page, state[page]);
     commit("mutLoader", false);
 };
 
@@ -122,6 +131,19 @@ export const actAddGroup = async ({ commit, state }, { page, item }) => {
 export const actAddPrice = async ({ commit, state }, { page, item }) => {
     commit("mutLoader", true);
     state[page].price.push(item);
+    state[page] = await api.UploadPage(page, state[page]);
+    commit("mutLoader", false);
+};
+
+export const actAddMedio = async ({ commit, state }, { page, item }) => {
+    commit("mutLoader", true);
+    let src = "";
+    if (item.newImages != []) {
+        src = await api.UploadImg([...item.newImages]);
+        item.images = [...src];
+    }
+
+    state[page].medio.push(item);
     state[page] = await api.UploadPage(page, state[page]);
     commit("mutLoader", false);
 };
