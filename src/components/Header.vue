@@ -22,6 +22,10 @@ export default {
                 title: "Медио",
                 name: "medio",
             },
+            {
+                title: "Новости",
+                name: "news",
+            },
         ];
         return {
             rout,

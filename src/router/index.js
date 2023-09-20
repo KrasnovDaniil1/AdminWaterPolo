@@ -28,6 +28,11 @@ const router = createRouter({
             name: "medio",
             component: () => import("../views/Medio.vue"),
         },
+        {
+            path: "/news",
+            name: "news",
+            component: () => import("../views/News.vue"),
+        },
     ],
 });
 
