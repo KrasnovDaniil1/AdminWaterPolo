@@ -17,14 +17,12 @@ export default {
         });
 
         let deleteTrainer = (id) => {
-            console.log("Удаление тренера в Children", id);
             store.dispatch("actDeleteTrainer", {
                 page: page,
                 id: id,
             });
         };
         let changeTrainer = (id, item) => {
-            console.log("Редактирование тренера в Children", id, item);
             store.dispatch("actChangeTrainer", {
                 page: page,
                 id,
@@ -32,7 +30,6 @@ export default {
             });
         };
         let addTrainer = (item) => {
-            console.log("Добавление тренера в Children", item);
             store.dispatch("actAddTrainer", {
                 page: page,
                 item,
@@ -40,14 +37,12 @@ export default {
         };
 
         let deleteGroup = (id) => {
-            console.log("Удаление группы в Children", id);
             store.dispatch("actDeleteGroup", {
                 page: page,
                 id: id,
             });
         };
         let changeGroup = (id, item) => {
-            console.log("Редактирование группы в Children", id, item);
             store.dispatch("actChangeGroup", {
                 page: page,
                 id,
@@ -55,7 +50,6 @@ export default {
             });
         };
         let addGroup = (item) => {
-            console.log("Добавление группы в Children", item);
             store.dispatch("actAddGroup", {
                 page: page,
                 item,
@@ -63,14 +57,12 @@ export default {
         };
 
         let deletePrice = (id) => {
-            console.log("Удаление цен в Children", id);
             store.dispatch("actDeletePrice", {
                 page: page,
                 id: id,
             });
         };
         let changePrice = (id, item) => {
-            console.log("Редактирование цен в Children", id, item);
             store.dispatch("actChangePrice", {
                 page: page,
                 id,
@@ -78,7 +70,6 @@ export default {
             });
         };
         let addPrice = (item) => {
-            console.log("Добавление цен в Children", item);
             store.dispatch("actAddPrice", {
                 page: page,
                 item,

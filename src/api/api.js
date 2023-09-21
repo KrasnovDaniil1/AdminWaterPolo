@@ -3,7 +3,6 @@ let auth =
 
 export const UploadImg = async (src) => {
     let form = new FormData();
-    console.log("api", src);
     if (src.length > 0) {
         for (let item of src) {
             form.append("files[]", item);
@@ -19,7 +18,6 @@ export const UploadImg = async (src) => {
         body: form,
     });
     let data = await response.json();
-    // console.log("api", data);
     return data.links;
 };
 
@@ -41,6 +39,5 @@ export const UploadPage = async (page, kod) => {
 export const Page = async (page) => {
     let response = await fetch(`https://klwp.pro/api/pages/${page}.json`);
     let data = await response.json();
-    console.log("Получил", page, data);
     return data;
 };

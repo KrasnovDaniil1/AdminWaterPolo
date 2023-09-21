@@ -17,14 +17,12 @@ export default {
         });
 
         let deleteTrainer = (id) => {
-            console.log("Удаление тренера в Student", id);
             store.dispatch("actDeleteTrainer", {
                 page: page,
                 id: id,
             });
         };
         let changeTrainer = (id, item) => {
-            console.log("Редактирование тренера в Student", id, item);
             store.dispatch("actChangeTrainer", {
                 page: page,
                 id,
@@ -32,7 +30,6 @@ export default {
             });
         };
         let addTrainer = (item) => {
-            console.log("Добавление тренера в Student", item);
             store.dispatch("actAddTrainer", {
                 page: page,
                 item,
@@ -40,14 +37,12 @@ export default {
         };
 
         let deleteGroup = (id) => {
-            console.log("Удаление группы в Student", id);
             store.dispatch("actDeleteGroup", {
                 page: page,
                 id: id,
             });
         };
         let changeGroup = (id, item) => {
-            console.log("Редактирование группы в Student", id, item);
             store.dispatch("actChangeGroup", {
                 page: page,
                 id,
@@ -55,7 +50,6 @@ export default {
             });
         };
         let addGroup = (item) => {
-            console.log("Добавление группы в Student", item);
             store.dispatch("actAddGroup", {
                 page: page,
                 item,

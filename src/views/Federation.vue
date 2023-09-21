@@ -17,14 +17,12 @@ export default {
         });
 
         let deleteTrainer = (id) => {
-            console.log("Удаление тренера в Federation", id);
             store.dispatch("actDeleteTrainer", {
                 page: page,
                 id: id,
             });
         };
         let changeTrainer = (id, item) => {
-            console.log("Редактирование тренера в Federation", id, item);
             store.dispatch("actChangeTrainer", {
                 page: page,
                 id,
@@ -32,7 +30,6 @@ export default {
             });
         };
         let addTrainer = (item) => {
-            console.log("Добавление тренера в Federation", item);
             store.dispatch("actAddTrainer", {
                 page: page,
                 item,

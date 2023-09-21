@@ -13,6 +13,7 @@ export default {
         const showPreview = () => {
             newVideos.value.push(video.value);
             context.emit("parentNewVideos", newVideos.value);
+            video.value = "";
         };
         const deleteOldVideos = (id) => {
             oldVideos.value.splice(id, 1);
@@ -46,7 +47,7 @@ export default {
             />
             <button
                 type="button"
-                class="btn btn-outline-primary"
+                class="btn btn-outline-primary mx-3"
                 @click="showPreview()"
                 v-if="activeChange"
             >

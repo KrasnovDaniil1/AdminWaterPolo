@@ -34,9 +34,18 @@ export const actDeletePrice = async ({ commit, state }, { page, id }) => {
     commit("mutLoader", false);
 };
 
+// удаление медио
 export const actDeleteMedio = async ({ commit, state }, { page, id }) => {
     commit("mutLoader", true);
     state[page].medio.splice(id, 1);
+    state[page] = await api.UploadPage(page, state[page]);
+    commit("mutLoader", false);
+};
+
+// удаление новостей
+export const actDeleteNews = async ({ commit, state }, { page, id }) => {
+    commit("mutLoader", true);
+    state[page].news.splice(id, 1);
     state[page] = await api.UploadPage(page, state[page]);
     commit("mutLoader", false);
 };
@@ -89,7 +98,7 @@ export const actChangePrice = async ({ commit, state }, { page, id, item }) => {
 export const actChangeMedio = async ({ commit, state }, { id, page, item }) => {
     commit("mutLoader", true);
     let src = [];
-    if (item.newImages != []) {
+    if (item.newImages.length != 0) {
         src = await api.UploadImg([...item.newImages]);
         item.images = [...src, ...item.oldImages];
     } else {
@@ -100,6 +109,31 @@ export const actChangeMedio = async ({ commit, state }, { id, page, item }) => {
     for (let key in item) {
         if (item[key] != "") {
             state[page].medio[id][key] = item[key];
+        }
+    }
+    state[page] = await api.UploadPage(page, state[page]);
+    commit("mutLoader", false);
+};
+
+// редактирование новостей
+export const actChangeNews = async ({ commit, state }, { id, page, item }) => {
+    commit("mutLoader", true);
+    let src = [];
+    if (item.newImages.length != 0) {
+        src = await api.UploadImg([...item.newImages]);
+        item.images = [...src, ...item.oldImages];
+    } else {
+        item.images = [...item.oldImages];
+    }
+    delete item.newImages;
+    delete item.oldImages;
+
+    item.videos = [...item.newVideos, ...item.oldVideos];
+    delete item.newVideos;
+    delete item.oldVideos;
+    for (let key in item) {
+        if (item[key] != "") {
+            state[page].news[id][key] = item[key];
         }
     }
     state[page] = await api.UploadPage(page, state[page]);
@@ -135,15 +169,40 @@ export const actAddPrice = async ({ commit, state }, { page, item }) => {
     commit("mutLoader", false);
 };
 
+// добавление медио
 export const actAddMedio = async ({ commit, state }, { page, item }) => {
     commit("mutLoader", true);
     let src = "";
-    if (item.newImages != []) {
+    if (item.newImages.length != 0) {
         src = await api.UploadImg([...item.newImages]);
         item.images = [...src];
     }
+    delete item.newImages;
+    delete item.oldImages;
 
     state[page].medio.push(item);
+    state[page] = await api.UploadPage(page, state[page]);
+    commit("mutLoader", false);
+};
+
+// добавление новостей
+export const actAddNews = async ({ commit, state }, { page, item }) => {
+    commit("mutLoader", true);
+
+    let src = "";
+    if (item.newImages.length != 0) {
+        src = await api.UploadImg([...item.newImages]);
+        item.images = [...src];
+    }
+    delete item.newImages;
+    delete item.oldImages;
+
+    item.videos = [...item.newVideos];
+
+    delete item.newVideos;
+    delete item.oldVideos;
+
+    state[page].news.push(item);
     state[page] = await api.UploadPage(page, state[page]);
     commit("mutLoader", false);
 };
