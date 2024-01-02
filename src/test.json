@@ -1,24 +1,253 @@
 {
-    "news": [
+    "trainers": [
         {
-            "title": "Прошли соревнования",
-            "time": "27.08.2023",
-            "msg": "В 1869 году водное поло было впервые представлено широкой публике в Лондоне, в то время игра называлась «футбол на воде» и не имела четко сформулированных правил. В 1870 году была созвана комиссия из знатоков спорта для формализации правил, но каких-то результатов комиссия не добилась. Лишь в 1876 году Уильям Уилсон составил правила игры в водное поло, которые оставались актуальными вплоть до 1890 года. С 1900 игра входит в список Олимпийских видов спорта, а первый мировой чемпионат по водному поло был проведён в 1973 году. Каждой команде выделяется всего 25 секунд на атаку, по истечении 25 секунд мяч переходит команде соперника. Правила позволяют каждой команде взять 4 тайм-аута за игру в основное время и 1 тайм-аут в дополнительное. Тайм-аут может взять только команда владеющая мячом. Одновременно на поле могут находиться 6 полевых игроков и 1 вратарь. В водном поло запрещено: Совершивший грубую ошибку, игрок удаляется из воды на 15 секунд или до конца времени атаки противника. По истечении штрафного времени игрок должен вернуться в игру. Негрубая ошибка наказывается свободным броском, который может быть направлен непосредственно в ворота противника, если нарушение произошло за пятиметровой игровой линией, или разыгран путём перепасовки. Игрок, заработавший 3 удаления, удаляется до конца игры с правом замены и садится на скамейку запасных с развязанной шапкой. В водном поло запрещено: Совершивший грубую ошибку, игрок удаляется из воды на 15 секунд или до конца времени атаки противника. По истечении штрафного времени игрок должен вернуться в игру. Негрубая ошибка наказывается свободным броском, который может быть направлен непосредственно в ворота противника, если нарушение произошло за пятиметровой игровой линией, или разыгран путём перепасовки. Игрок, заработавший 3 удаления, удаляется до конца игры с правом замены и садится на скамейку запасных с развязанной шапкой+",
-            "images": [],
-            "videos": [
-                "<iframe width=\"1056\" height=\"594\" src=\"https://www.youtube.com/embed/pQLGvi_byeg\" title=\"Финал Азиады-2018 по водному поло. Япония - Казахстан\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
-                "<iframe width=\"1056\" height=\"594\" src=\"https://www.youtube.com/embed/VHYhbvoNCoA\" title=\"Обзор матча Казахстан–Нидерланды - 2:30.Женщины.Водное поло. Чемпионат мира по водным видам спорта\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>"
-            ]
+            "src": "https://klwp.pro/uploads/657b8bb0.jpg",
+            "name": "Алексей Иванович",
+            "phone_number": "+79990001122",
+            "info": "Тренер с хорошей карьерой",
+            "vk": "https://klwp.pro/",
+            "telegram": "https://klwp.pro/",
+            "train": ["children", "student", "amateur"]
         },
         {
-            "title": "Прошли соревнования",
-            "time": "27.08.2023",
-            "msg": "В 1869 году водное поло было впервые представлено широкой публике в Лондоне, в то время игра называлась «футбол на воде» и не имела четко сформулированных правил. В 1870 году была созвана комиссия из знатоков спорта для формализации правил, но каких-то результатов комиссия не добилась. Лишь в 1876 году Уильям Уилсон составил правила игры в водное поло, которые оставались актуальными вплоть до 1890 года. С 1900 игра входит в список Олимпийских видов спорта, а первый мировой чемпионат по водному поло был проведён в 1973 году. Каждой команде выделяется всего 25 секунд на атаку, по истечении 25 секунд мяч переходит команде соперника. Правила позволяют каждой команде взять 4 тайм-аута за игру в основное время и 1 тайм-аут в дополнительное. Тайм-аут может взять только команда владеющая мячом. Одновременно на поле могут находиться 6 полевых игроков и 1 вратарь. В водном поло запрещено: Совершивший грубую ошибку, игрок удаляется из воды на 15 секунд или до конца времени атаки противника. По истечении штрафного времени игрок должен вернуться в игру. Негрубая ошибка наказывается свободным броском, который может быть направлен непосредственно в ворота противника, если нарушение произошло за пятиметровой игровой линией, или разыгран путём перепасовки. Игрок, заработавший 3 удаления, удаляется до конца игры с правом замены и садится на скамейку запасных с развязанной шапкой. В водном поло запрещено: Совершивший грубую ошибку, игрок удаляется из воды на 15 секунд или до конца времени атаки противника. По истечении штрафного времени игрок должен вернуться в игру. Негрубая ошибка наказывается свободным броском, который может быть направлен непосредственно в ворота противника, если нарушение произошло за пятиметровой игровой линией, или разыгран путём перепасовки. Игрок, заработавший 3 удаления, удаляется до конца игры с правом замены и садится на скамейку запасных с развязанной шапкой+",
-            "images": [],
-            "videos": [
-                "<iframe width=\"1056\" height=\"594\" src=\"https://www.youtube.com/embed/pQLGvi_byeg\" title=\"Финал Азиады-2018 по водному поло. Япония - Казахстан\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
-                "<iframe width=\"1056\" height=\"594\" src=\"https://www.youtube.com/embed/VHYhbvoNCoA\" title=\"Обзор матча Казахстан–Нидерланды - 2:30.Женщины.Водное поло. Чемпионат мира по водным видам спорта\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>"
+            "src": "https://klwp.pro/uploads/657b8bb0.jpg",
+            "name": "Алексей Иванович",
+            "phone_number": "+79990001122",
+            "info": "Тренер с хорошей карьерой",
+            "vk": "https://klwp.pro/",
+            "telegram": "https://klwp.pro/",
+            "train": ["children", "student"]
+        },
+        {
+            "src": "https://klwp.pro/uploads/657b8bb0.jpg",
+            "name": "Алексей Иванович",
+            "phone_number": "+79990001122",
+            "info": "Тренер с хорошей карьерой",
+            "vk": "https://klwp.pro/",
+            "telegram": "https://klwp.pro/",
+            "train": ["children", "student"]
+        }
+    ],
+    "time": {
+        "children": {
+            "first": [
+                [
+                    {
+                        "time": "9.00",
+                        "category": "Дети",
+                        "address": "Тихоокеанская улица, 5"
+                    },
+                    {
+                        "time": "9.00",
+                        "category": "Дети",
+                        "address": "Тихоокеанская улица, 5"
+                    }
+                ],
+                [
+                    {
+                        "time": "12.00",
+                        "category": "Дети",
+                        "address": "Тихоокеанская улица, 5"
+                    }
+                ],
+                [
+                    {
+                        "time": "-",
+                        "category": "-",
+                        "address": "-"
+                    }
+                ],
+                [
+                    {
+                        "time": "-",
+                        "category": "-",
+                        "address": "-"
+                    }
+                ],
+                [
+                    {
+                        "time": "-",
+                        "category": "-",
+                        "address": "-"
+                    }
+                ],
+                [
+                    {
+                        "time": "-",
+                        "category": "-",
+                        "address": "-"
+                    }
+                ],
+                [
+                    {
+                        "time": "-",
+                        "category": "-",
+                        "address": "-"
+                    }
+                ]
+            ],
+            "second": [
+                [
+                    {
+                        "time": "12.00",
+                        "category": "Дети",
+                        "address": "Тихоокеанская улица, 5"
+                    }
+                ],
+                [
+                    {
+                        "time": "-",
+                        "category": "-",
+                        "address": "-"
+                    }
+                ],
+                [
+                    {
+                        "time": "-",
+                        "category": "-",
+                        "address": "-"
+                    }
+                ],
+                [
+                    {
+                        "time": "-",
+                        "category": "-",
+                        "address": "-"
+                    }
+                ],
+                [
+                    {
+                        "time": "-",
+                        "category": "-",
+                        "address": "-"
+                    }
+                ],
+                [
+                    {
+                        "time": "-",
+                        "category": "-",
+                        "address": "-"
+                    }
+                ],
+                [
+                    {
+                        "time": "-",
+                        "category": "-",
+                        "address": "-"
+                    }
+                ]
             ]
         }
-    ]
+    },
+    "reviews": [
+        {
+            "text": "1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit metus sit amet nisi lacinia condimentum. Phasellus eu nibh lobortis, tincidunt nisi in, ornare leo. Donec hendrerit interdum mollis. Vestibulum consequat erat sapien, a pellentesque quam accumsan nec.",
+            "name": "Имя Отчеств"
+        },
+        {
+            "text": "2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit metus sit amet nisi lacinia condimentum. Phasellus eu nibh lobortis, tincidunt nisi in, ornare leo. Donec hendrerit interdum mollis. Vestibulum consequat erat sapien, a pellentesque quam accumsan nec.",
+            "name": "Имя Отчест"
+        },
+        {
+            "text": "3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit metus sit amet nisi lacinia condimentum. Phasellus eu nibh lobortis, tincidunt nisi in, ornare leo. Donec hendrerit interdum mollis. Vestibulum consequat erat sapien, a pellentesque quam accumsan nec.",
+            "name": "Имя Отчес"
+        },
+        {
+            "text": "4 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit metus sit amet nisi lacinia condimentum. Phasellus eu nibh lobortis, tincidunt nisi in, ornare leo. Donec hendrerit interdum mollis. ",
+            "name": "Имя -2"
+        },
+        {
+            "text": "5 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit metus sit amet nisi lacinia condimentum. Phasellus eu nibh lobortis, tincidunt nisi in, ornare leo. Donec hendrerit interdum mollis. ",
+            "name": "Имя -1"
+        }
+    ],
+    "blog": [
+        {
+            "id": 0,
+            "title": "student",
+            "time": "11.12.2023",
+            "msg": "sfsd",
+            "src": "https://klwp.pro/uploads/2974e7a2.jpeg",
+            "category": "student"
+        },
+        {
+            "id": 1,
+            "title": "amateur",
+            "time": "11.12.2023",
+            "msg": "sfsd",
+            "src": "https://klwp.pro/uploads/2974e7a2.jpeg",
+            "category": "amateur"
+        },
+        {
+            "id": 2,
+            "title": "children",
+            "time": "11.12.2023",
+            "msg": "sfsd",
+            "src": "https://klwp.pro/uploads/2974e7a2.jpeg",
+            "category": "children"
+        },
+        {
+            "id": 3,
+            "title": "federation",
+            "time": "11.12.2023",
+            "msg": "sfsd",
+            "src": "https://klwp.pro/uploads/2974e7a2.jpeg",
+            "category": "federation"
+        }
+    ],
+    "federationMembers": [
+        {
+            "src": "https://klwp.pro/uploads/657b8bb0.jpg",
+            "name": "Алексей Иванович",
+            "post": "Должность",
+            "info": "Тренер с хорошей карьерой"
+        },
+        {
+            "src": "https://klwp.pro/uploads/657b8bb0.jpg",
+            "name": "Алексей Иванович",
+            "post": "Должность",
+            "info": "Тренер с хорошей карьерой"
+        },
+        {
+            "src": "https://klwp.pro/uploads/657b8bb0.jpg",
+            "name": "Алексей Иванович",
+            "post": "Должность",
+            "info": "Тренер с хорошей карьерой"
+        },
+        {
+            "src": "https://klwp.pro/uploads/657b8bb0.jpg",
+            "name": "Алексей Иванович",
+            "post": "Должность",
+            "info": "Тренер с хорошей карьерой"
+        },
+        {
+            "src": "https://klwp.pro/uploads/657b8bb0.jpg",
+            "name": "Алексей Иванович",
+            "post": "Должность",
+            "info": "Тренер с хорошей карьерой"
+        }
+    ],
+    "price": [
+        {
+            "title": "Разовое посещение",
+            "info": "Разовый платеж",
+            "cost": "600",
+            "descriptions": [
+                "Первая тренировка бесплатно",
+                "Разовое посещение тренировки"
+            ],
+            "category": "children"
+        },
+        {
+            "title": "Абонемент посещение",
+            "info": "Абонемент платеж",
+            "cost": "600",
+            "descriptions": [
+                "Первая тренировка бесплатно",
+                "Разовое посещение тренировки"
+            ],
+            "category": "children"
+        }
+    ],
+    "studentsTeams": []
 }

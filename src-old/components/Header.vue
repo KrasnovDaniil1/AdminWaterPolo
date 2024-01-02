@@ -3,29 +3,29 @@ export default {
     setup() {
         const rout = [
             {
-                title: "Тренеры",
-                name: "trainers",
+                title: "Любителям",
+                name: "amateur",
             },
-            // {
-            //     title: "Детям",
-            //     name: "children",
-            // },
-            // {
-            //     title: "Студентам",
-            //     name: "student",
-            // },
-            // {
-            //     title: "Федерация",
-            //     name: "federation",
-            // },
-            // {
-            //     title: "Медио",
-            //     name: "medio",
-            // },
-            // {
-            //     title: "Новости",
-            //     name: "news",
-            // },
+            {
+                title: "Детям",
+                name: "children",
+            },
+            {
+                title: "Студентам",
+                name: "student",
+            },
+            {
+                title: "Федерация",
+                name: "federation",
+            },
+            {
+                title: "Медио",
+                name: "medio",
+            },
+            {
+                title: "Новости",
+                name: "news",
+            },
         ];
         return {
             rout,

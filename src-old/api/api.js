@@ -36,8 +36,8 @@ export const UploadPage = async (page, kod) => {
     return data;
 };
 
-export const Page = async () => {
-    let response = await fetch(`https://klwp.pro/api/pages/WaterPolo.json`);
+export const Page = async (page) => {
+    let response = await fetch(`https://klwp.pro/api/pages/${page}.json`);
     let data = await response.json();
     return data;
 };

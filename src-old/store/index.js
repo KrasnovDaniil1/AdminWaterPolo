@@ -4,13 +4,12 @@ import * as actions from "./actions";
 import * as mutations from "./mutations";
 
 const state = {
-    // pageAmateur: {},
-    // pageChildren: {},
-    // pageStudent: {},
-    // pageFederation: {},
-    // pageNews: {},
-    // pageMedio: {},
-    data: {},
+    pageAmateur: {},
+    pageChildren: {},
+    pageStudent: {},
+    pageFederation: {},
+    pageNews: {},
+    pageMedio: {},
     loader: false,
 };
 

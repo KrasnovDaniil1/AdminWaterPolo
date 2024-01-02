@@ -4,35 +4,35 @@ const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
         {
-            path: "/",
-            name: "amateur",
-            component: () => import("../views/Amateur.vue"),
+            path: "/admin",
+            name: "trainers",
+            component: () => import("../views/Trainers.vue"),
         },
-        {
-            path: "/children",
-            name: "children",
-            component: () => import("../views/Children.vue"),
-        },
-        {
-            path: "/student",
-            name: "student",
-            component: () => import("../views/Student.vue"),
-        },
-        {
-            path: "/federation",
-            name: "federation",
-            component: () => import("../views/Federation.vue"),
-        },
-        {
-            path: "/medio",
-            name: "medio",
-            component: () => import("../views/Medio.vue"),
-        },
-        {
-            path: "/news",
-            name: "news",
-            component: () => import("../views/News.vue"),
-        },
+        // {
+        //     path: "admin/",
+        //     name: "amateur",
+        //     component: () => import("../views/Amateur.vue"),
+        // },
+        // {
+        //     path: "admin/children",
+        //     name: "children",
+        //     component: () => import("../views/Children.vue"),
+        // },
+        // {
+        //     path: "admin/student",
+        //     name: "student",
+        //     component: () => import("../views/Student.vue"),
+        // },
+        // {
+        //     path: "admin/federation",
+        //     name: "federation",
+        //     component: () => import("../views/Federation.vue"),
+        // },
+        // {
+        //     path: "admin/news",
+        //     name: "news",
+        //     component: () => import("../views/News.vue"),
+        // },
     ],
 });
 
