@@ -1,5 +1,5 @@
 <script>
-import {  ref } from "vue";
+import { ref } from "vue";
 export default {
     props: {
         trainers: {
@@ -33,7 +33,10 @@ export default {
         };
 
         const addTrainer = () => {
-            context.emit("parentAddTrainer", newTrainer.value);
+            store.dispatch("actAddTrainer", {
+                page: page,
+                item,
+            });
             modelActive.value = false;
             clearNewTrainer();
         };

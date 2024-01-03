@@ -9,7 +9,17 @@ export default {
     },
     setup() {
         const store = useStore();
-
+        const changeActive = ref();
+        const oldTrainer = ref({
+            src: "",
+            name: "",
+            phone_number: "",
+            info: "",
+            vk: "",
+            telegram: "",
+            delTrain: [],
+            addTrain: [],
+        });
         const modelActive = ref(false);
         const newTrainer = ref({
             src: "",
@@ -33,24 +43,68 @@ export default {
             };
         };
         const addTrainer = () => {
+            store.dispatch("actAddTrainer", newTrainer.value);
             modelActive.value = false;
             clearNewTrainer();
         };
-        return {
-            store,
+        const changeTrainer = (id, item) => {
+            store.dispatch("actChangeTrainer", {
+                id: id,
+                item: oldTrainer.value,
+            });
+            cancelChangeTrainer();
+        };
+        const deleteTrainer = (id) => {
+            store.dispatch("actDeleteTrainer", id);
+            cancelChangeTrainer();
+        };
+        const cancelChangeTrainer = () => {
+            oldTrainer.value = {
+                src: "",
+                name: "",
+                phone_number: "",
+                info: "",
+                vk: "",
+                telegram: "",
+                train: [],
+            };
+            changeActive.value = -1;
+        };
 
+        const lookCheckbox = (e) => {
+            if (e.checked) {
+                oldTrainer.value.addTrain.push(e.value);
+                let index = oldTrainer.value.delTrain.indexOf(e.value);
+                if (index != -1) {
+                    oldTrainer.value.delTrain.splice(index, 1);
+                }
+            } else {
+                oldTrainer.value.delTrain.push(e.value);
+                let index = oldTrainer.value.addTrain.indexOf(e.value);
+                if (index != -1) {
+                    oldTrainer.value.addTrain.splice(index, 1);
+                }
+            }
+        };
+        return {
+            changeActive,
+            store,
             newTrainer,
+            oldTrainer,
             modelActive,
             trainers: computed(() => store.getters.getData.trainers),
+            lookCheckbox,
+            cancelChangeTrainer,
+            changeTrainer,
             clearNewTrainer,
             addTrainer,
+            deleteTrainer,
         };
     },
 };
 </script>
 <template>
     <div class="trainers">
-        {{ newTrainer }}
         <div class="d-flex justify-content-between align-items-center">
             <h4>Тренеры:</h4>
             <button
@@ -162,10 +216,11 @@ export default {
             v-for="(item, index) in trainers"
             :key="index"
         >
-            <img
-                :src="item.src"
-                class="col-2 br-10"
-                style="aspect-ratio: 520/720"
+            <SaveImage
+                class="col-2"
+                :image="item.src"
+                :dis="changeActive != index"
+                @parentNewImage="(e) => (oldTrainer.src = e)"
             />
             <nav class="col-7 d-flex flex-column justify-content-between">
                 <label class="d-flex">
@@ -174,7 +229,8 @@ export default {
                         type="text"
                         class="form-control"
                         :value="item.name"
-                        disabled
+                        :disabled="changeActive != index"
+                        @change="oldTrainer.name = $event.target.value"
                     />
                 </label>
                 <label class="d-flex">
@@ -183,7 +239,8 @@ export default {
                         type="text"
                         class="form-control"
                         :value="item.phone_number"
-                        disabled
+                        :disabled="changeActive != index"
+                        @change="oldTrainer.phone_number = $event.target.value"
                     />
                 </label>
                 <label class="d-flex">
@@ -192,7 +249,8 @@ export default {
                         type="text"
                         class="form-control"
                         :value="item.vk"
-                        disabled
+                        :disabled="changeActive != index"
+                        @change="oldTrainer.vk = $event.target.value"
                     />
                 </label>
                 <label class="d-flex">
@@ -201,7 +259,8 @@ export default {
                         type="text"
                         class="form-control"
                         :value="item.telegram"
-                        disabled
+                        :disabled="changeActive != index"
+                        @change="oldTrainer.telegram = $event.target.value"
                     />
                 </label>
                 <label class="d-flex">
@@ -209,9 +268,11 @@ export default {
                     <textarea
                         type="text"
                         class="form-control"
-                        :placeholder="item.info"
-                        disabled
-                    />
+                        :disabled="changeActive != index"
+                        @change="oldTrainer.info = $event.target.value"
+                        v-model="item.info"
+                    >
+                    </textarea>
                 </label>
                 <div class="d-flex justify-content-between">
                     <label class="d-flex align-items-center">
@@ -219,8 +280,10 @@ export default {
                         <input
                             type="checkbox"
                             class="form-check-input mx-2"
+                            value="children"
                             :checked="item.train.includes('children')"
-                            disabled
+                            :disabled="changeActive != index"
+                            @change="lookCheckbox($event.target)"
                         />
                     </label>
                     <label class="d-flex align-items-center">
@@ -228,8 +291,10 @@ export default {
                         <input
                             type="checkbox"
                             class="form-check-input mx-2"
+                            value="amateur"
                             :checked="item.train.includes('amateur')"
-                            disabled
+                            :disabled="changeActive != index"
+                            @change="lookCheckbox($event.target)"
                         />
                     </label>
                     <label class="d-flex align-items-center">
@@ -237,8 +302,10 @@ export default {
                         <input
                             type="checkbox"
                             class="form-check-input mx-2"
+                            value="student"
                             :checked="item.train.includes('student')"
-                            disabled
+                            :disabled="changeActive != index"
+                            @change="lookCheckbox($event.target)"
                         />
                     </label>
                 </div>
@@ -247,9 +314,34 @@ export default {
                 <button
                     type="button"
                     class="btn btn-outline-danger"
-                    @click="deleteTrainer(1)"
+                    @click="deleteTrainer(index)"
+                    v-if="changeActive == index"
                 >
                     Удалить
+                </button>
+                <button
+                    type="button"
+                    class="btn btn-outline-success"
+                    @click="changeActive = index"
+                    v-else
+                >
+                    Редактировать
+                </button>
+                <button
+                    type="button"
+                    class="btn btn-outline-primary"
+                    @click="changeTrainer(index, item)"
+                    v-if="changeActive == index"
+                >
+                    Сохранить
+                </button>
+                <button
+                    type="button"
+                    class="btn btn-outline-warning"
+                    @click="cancelChangeTrainer()"
+                    v-if="changeActive == index"
+                >
+                    Отменить
                 </button>
             </div>
         </div>

@@ -21,11 +21,11 @@ export const UploadImg = async (src) => {
     return data.links;
 };
 
-export const UploadPage = async (page, kod) => {
+export const UploadPage = async (kod) => {
     kod = JSON.stringify(kod);
     let form = new FormData();
     form.append("data", kod);
-    let response = await fetch(`https://klwp.pro/api/page.php?page=${page}`, {
+    let response = await fetch(`https://klwp.pro/api/page.php?page=WaterPolo`, {
         method: "POST",
         headers: {
             Authorization: auth,

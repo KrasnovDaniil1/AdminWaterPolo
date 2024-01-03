@@ -5,6 +5,53 @@ export const actPage = async (context) => {
     context.commit("mutPage", await api.Page("WaterPolo"));
     context.commit("mutLoader", false);
 };
+
+export const actAddTrainer = async ({ commit, state }, item) => {
+    console.log("actAddTrainer", item);
+    commit("mutLoader", true);
+    let src = "";
+    if (item.src != "") {
+        src = await api.UploadImg(item.src);
+        item.src = src[0];
+    }
+    state.data.trainers.push(item);
+    state.data = await api.UploadPage(state.data);
+    commit("mutLoader", false);
+};
+
+export const actDeleteTrainer = async ({ commit, state }, id) => {
+    commit("mutLoader", true);
+    state.data.trainers.splice(id, 1);
+    state.data = await api.UploadPage(state.data);
+    commit("mutLoader", false);
+};
+
+export const actChangeTrainer = async ({ commit, state }, { id, item }) => {
+    commit("mutLoader", true);
+    let src = "";
+    if (item.src != "") {
+        src = await api.UploadImg(item.src);
+        item.src = src[0];
+    }
+    for (let key in item) {
+        if (item[key] != "" && key != "delTrain") {
+            state.data.trainers[id][key] = item[key];
+        }
+    }
+    if (item.delTrain != "") {
+        for (let k of state.data.trainers[id].train) {
+            if (item.delTrain.includes(k)) {
+                let index = state.data.trainers[id].train.indexOf(k);
+                state.data.trainers[id].train.splice(index, 1);
+            }
+        }
+    }
+    state.data.trainers[id].train.push(...item.addTrain);
+    state.data = await api.UploadPage(state.data);
+    console.log("a", state.data.train);
+    commit("mutLoader", false);
+};
+
 // получение json страницы
 // export const actPage = async (context, page) => {
 //     context.commit("mutLoader", true);

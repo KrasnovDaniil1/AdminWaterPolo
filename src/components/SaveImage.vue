@@ -2,6 +2,17 @@
 import { ref } from "vue";
 
 export default {
+    props: {
+        image: {
+            type: String,
+            default:
+                "https://w7.pngwing.com/pngs/259/411/png-transparent-computer-icons-text-information-link-blue-angle-text-thumbnail.png",
+        },
+        dis: {
+            type: Boolean,
+            default: true,
+        },
+    },
     setup(props, context) {
         const previewImage = ref();
         const newImage = ref();
@@ -40,6 +51,7 @@ export default {
             class="form-control"
             accept="image/*"
             @change="showPreview"
+            :disabled="dis"
         />
         <img
             class="br-10 my-3"
@@ -50,10 +62,15 @@ export default {
         <img
             class="br-10 my-3"
             style="width: 100%; aspect-ratio: 520/720"
-            src="https://w7.pngwing.com/pngs/259/411/png-transparent-computer-icons-text-information-link-blue-angle-text-thumbnail.png"
+            :src="image"
             v-else
         />
-        <button type="button" class="btn btn-danger" @click="deleteImage()">
+        <button
+            type="button"
+            class="btn btn-danger"
+            @click="deleteImage()"
+            :disabled="dis"
+        >
             Удалить картинку
         </button>
     </label>

@@ -4,6 +4,15 @@ export const mutPage = (state, data) => {
 
 export const mutLoader = (state, status) => (state.loader = status);
 
+// export const mutAddTrainer = async (state, { item }) => {
+//     let src = "";
+//     if (item.src != "") {
+//         src = await api.UploadImg(item.src);
+//         item.src = "https://klwp.pro/" + src[0];
+//     }
+//     state.trainers.push(item);
+// };
+
 // export const mutDeleteGroup = (state, { page, id }) => {
 //     state[page].groups.splice(id, 1);
 // };
