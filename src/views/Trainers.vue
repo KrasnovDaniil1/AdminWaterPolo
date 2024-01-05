@@ -122,6 +122,7 @@ export default {
             <SaveImage
                 class="col-2"
                 @parentNewImage="(e) => (newTrainer.src = e)"
+                :dis="false"
             />
             <nav class="d-flex flex-column justify-content-between col-7">
                 <label class="d-flex">

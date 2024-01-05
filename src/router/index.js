@@ -4,9 +4,24 @@ const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
         {
-            path: "/admin",
+            path: "/admin/",
             name: "trainers",
             component: () => import("../views/Trainers.vue"),
+        },
+        {
+            path: "/admin/members",
+            name: "members",
+            component: () => import("../views/Members.vue"),
+        },
+        {
+            path: "/admin/reviews",
+            name: "reviews",
+            component: () => import("../views/Reviews.vue"),
+        },
+        {
+            path: "/admin/price",
+            name: "price",
+            component: () => import("../views/Price.vue"),
         },
         // {
         //     path: "admin/",

@@ -6,6 +6,18 @@ export default {
                 title: "Тренеры",
                 name: "trainers",
             },
+            {
+                title: "Члены Федерации",
+                name: "members",
+            },
+            {
+                title: "Отзывы",
+                name: "reviews",
+            },
+            {
+                title: "Цены",
+                name: "price",
+            },
             // {
             //     title: "Детям",
             //     name: "children",

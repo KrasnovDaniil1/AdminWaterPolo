@@ -5,9 +5,8 @@ export const actPage = async (context) => {
     context.commit("mutPage", await api.Page("WaterPolo"));
     context.commit("mutLoader", false);
 };
-
+// тренера
 export const actAddTrainer = async ({ commit, state }, item) => {
-    console.log("actAddTrainer", item);
     commit("mutLoader", true);
     let src = "";
     if (item.src != "") {
@@ -48,7 +47,99 @@ export const actChangeTrainer = async ({ commit, state }, { id, item }) => {
     }
     state.data.trainers[id].train.push(...item.addTrain);
     state.data = await api.UploadPage(state.data);
-    console.log("a", state.data.train);
+    commit("mutLoader", false);
+};
+
+// члены федерации
+export const actAddMember = async ({ commit, state }, item) => {
+    commit("mutLoader", true);
+    let src = "";
+    if (item.src != "") {
+        src = await api.UploadImg(item.src);
+        item.src = src[0];
+    }
+    state.data.federationMembers.push(item);
+    state.data = await api.UploadPage(state.data);
+    commit("mutLoader", false);
+};
+
+export const actDeleteMember = async ({ commit, state }, id) => {
+    commit("mutLoader", true);
+    state.data.federationMembers.splice(id, 1);
+    state.data = await api.UploadPage(state.data);
+    commit("mutLoader", false);
+};
+
+export const actChangeMember = async ({ commit, state }, { id, item }) => {
+    commit("mutLoader", true);
+    let src = "";
+    if (item.src != "") {
+        src = await api.UploadImg(item.src);
+        item.src = src[0];
+    }
+    for (let key in item) {
+        if (item[key] != "") {
+            state.data.federationMembers[id][key] = item[key];
+        }
+    }
+
+    state.data = await api.UploadPage(state.data);
+    commit("mutLoader", false);
+};
+
+// отзывы
+export const actAddReview = async ({ commit, state }, item) => {
+    commit("mutLoader", true);
+
+    state.data.reviews.push(item);
+    state.data = await api.UploadPage(state.data);
+    commit("mutLoader", false);
+};
+
+export const actDeleteReview = async ({ commit, state }, id) => {
+    commit("mutLoader", true);
+    state.data.reviews.splice(id, 1);
+    state.data = await api.UploadPage(state.data);
+    commit("mutLoader", false);
+};
+
+export const actChangeReview = async ({ commit, state }, { id, item }) => {
+    commit("mutLoader", true);
+    for (let key in item) {
+        if (item[key] != "") {
+            state.data.reviews[id][key] = item[key];
+        }
+    }
+
+    state.data = await api.UploadPage(state.data);
+    commit("mutLoader", false);
+};
+
+// цены
+export const actAddPrice = async ({ commit, state }, item) => {
+    commit("mutLoader", true);
+
+    state.data.price.push(item);
+    state.data = await api.UploadPage(state.data);
+    commit("mutLoader", false);
+};
+
+export const actDeletePrice = async ({ commit, state }, id) => {
+    commit("mutLoader", true);
+    state.data.price.splice(id, 1);
+    state.data = await api.UploadPage(state.data);
+    commit("mutLoader", false);
+};
+
+export const actChangePrice = async ({ commit, state }, { id, item }) => {
+    commit("mutLoader", true);
+    for (let key in item) {
+        if (item[key] != "") {
+            state.data.price[id][key] = item[key];
+        }
+    }
+
+    state.data = await api.UploadPage(state.data);
     commit("mutLoader", false);
 };
 
