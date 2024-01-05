@@ -23,6 +23,16 @@ const router = createRouter({
             name: "price",
             component: () => import("../views/Price.vue"),
         },
+        {
+            path: "/admin/blog",
+            name: "blog",
+            component: () => import("../views/Blog.vue"),
+        },
+        {
+            path: "/admin/timetable",
+            name: "timetable",
+            component: () => import("../views/TimeTable.vue"),
+        },
         // {
         //     path: "admin/",
         //     name: "amateur",

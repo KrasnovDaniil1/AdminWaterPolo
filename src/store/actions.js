@@ -143,6 +143,45 @@ export const actChangePrice = async ({ commit, state }, { id, item }) => {
     commit("mutLoader", false);
 };
 
+// блог
+export const actAddBlog = async ({ commit, state }, item) => {
+    commit("mutLoader", true);
+    let src = "";
+    if (item.src != "") {
+        src = await api.UploadImg(item.src);
+        item.src = src[0];
+    }
+
+    let id =
+        state.data.blog.length > 0
+            ? state.data.blog[state.data.blog.length - 1].id + 1
+            : 1;
+    item.id = id;
+    console.log(item, "sada");
+    state.data.blog.push(item);
+    state.data = await api.UploadPage(state.data);
+    commit("mutLoader", false);
+};
+
+export const actDeleteBlog = async ({ commit, state }, id) => {
+    commit("mutLoader", true);
+    state.data.price.splice(id, 1);
+    state.data = await api.UploadPage(state.data);
+    commit("mutLoader", false);
+};
+
+export const actChangeBlog = async ({ commit, state }, { id, item }) => {
+    commit("mutLoader", true);
+    for (let key in item) {
+        if (item[key] != "") {
+            state.data.price[id][key] = item[key];
+        }
+    }
+
+    state.data = await api.UploadPage(state.data);
+    commit("mutLoader", false);
+};
+
 // получение json страницы
 // export const actPage = async (context, page) => {
 //     context.commit("mutLoader", true);

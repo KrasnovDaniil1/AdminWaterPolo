@@ -18,6 +18,14 @@ export default {
                 title: "Цены",
                 name: "price",
             },
+            {
+                title: "Блог",
+                name: "blog",
+            },
+            {
+                title: "Рассписание",
+                name: "timetable",
+            },
             // {
             //     title: "Детям",
             //     name: "children",
