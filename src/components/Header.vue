@@ -23,29 +23,9 @@ export default {
                 name: "blog",
             },
             {
-                title: "Рассписание",
+                title: "Расписание",
                 name: "timetable",
             },
-            // {
-            //     title: "Детям",
-            //     name: "children",
-            // },
-            // {
-            //     title: "Студентам",
-            //     name: "student",
-            // },
-            // {
-            //     title: "Федерация",
-            //     name: "federation",
-            // },
-            // {
-            //     title: "Медио",
-            //     name: "medio",
-            // },
-            // {
-            //     title: "Новости",
-            //     name: "news",
-            // },
         ];
         return {
             rout,

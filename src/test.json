@@ -28,117 +28,18 @@
             "train": ["children", "student"]
         }
     ],
-    "time": {
-        "children": {
-            "first": [
-                [
-                    {
-                        "time": "9.00",
-                        "category": "Дети",
-                        "address": "Тихоокеанская улица, 5"
-                    },
-                    {
-                        "time": "9.00",
-                        "category": "Дети",
-                        "address": "Тихоокеанская улица, 5"
-                    }
-                ],
-                [
-                    {
-                        "time": "12.00",
-                        "category": "Дети",
-                        "address": "Тихоокеанская улица, 5"
-                    }
-                ],
-                [
-                    {
-                        "time": "-",
-                        "category": "-",
-                        "address": "-"
-                    }
-                ],
-                [
-                    {
-                        "time": "-",
-                        "category": "-",
-                        "address": "-"
-                    }
-                ],
-                [
-                    {
-                        "time": "-",
-                        "category": "-",
-                        "address": "-"
-                    }
-                ],
-                [
-                    {
-                        "time": "-",
-                        "category": "-",
-                        "address": "-"
-                    }
-                ],
-                [
-                    {
-                        "time": "-",
-                        "category": "-",
-                        "address": "-"
-                    }
-                ]
-            ],
-            "second": [
-                [
-                    {
-                        "time": "12.00",
-                        "category": "Дети",
-                        "address": "Тихоокеанская улица, 5"
-                    }
-                ],
-                [
-                    {
-                        "time": "-",
-                        "category": "-",
-                        "address": "-"
-                    }
-                ],
-                [
-                    {
-                        "time": "-",
-                        "category": "-",
-                        "address": "-"
-                    }
-                ],
-                [
-                    {
-                        "time": "-",
-                        "category": "-",
-                        "address": "-"
-                    }
-                ],
-                [
-                    {
-                        "time": "-",
-                        "category": "-",
-                        "address": "-"
-                    }
-                ],
-                [
-                    {
-                        "time": "-",
-                        "category": "-",
-                        "address": "-"
-                    }
-                ],
-                [
-                    {
-                        "time": "-",
-                        "category": "-",
-                        "address": "-"
-                    }
-                ]
-            ]
+
+    "time": [
+        {
+            "week": "monday",
+            "time": "9.00",
+            "title": "Дети",
+            "address": "Тихоокеанская улица, 5",
+            "category": "children",
+            "one": true,
+            "two": true
         }
-    },
+    ],
     "reviews": [
         {
             "text": "1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit metus sit amet nisi lacinia condimentum. Phasellus eu nibh lobortis, tincidunt nisi in, ornare leo. Donec hendrerit interdum mollis. Vestibulum consequat erat sapien, a pellentesque quam accumsan nec.",

@@ -158,7 +158,6 @@ export const actAddBlog = async ({ commit, state }, item) => {
             ? state.data.blog[state.data.blog.length - 1].id + 1
             : 1;
     item.id = id;
-    console.log(item, "sada");
     state.data.blog.push(item);
     state.data = await api.UploadPage(state.data);
     commit("mutLoader", false);
@@ -191,6 +190,39 @@ export const actChangeBlog = async ({ commit, state }, { id, item }) => {
         }
         return elem;
     });
+
+    state.data = await api.UploadPage(state.data);
+    commit("mutLoader", false);
+};
+
+// расписание
+export const actAddTime = async ({ commit, state }, item) => {
+    commit("mutLoader", true);
+
+    console.log(item, "item");
+    state.data.time.push(item);
+    state.data = await api.UploadPage(state.data);
+    console.log(state.data, "state.data");
+
+    commit("mutLoader", false);
+};
+
+export const actDeleteTime = async ({ commit, state }, id) => {
+    commit("mutLoader", true);
+
+    state.data.time.splice(id, 1);
+    state.data = await api.UploadPage(state.data);
+    commit("mutLoader", false);
+};
+
+export const actChangeTime = async ({ commit, state }, { id, item }) => {
+    commit("mutLoader", true);
+    console.log(item, "time");
+    for (let key in item) {
+        if (item[key] != "") {
+            state.data.time[id][key] = item[key];
+        }
+    }
 
     state.data = await api.UploadPage(state.data);
     commit("mutLoader", false);
