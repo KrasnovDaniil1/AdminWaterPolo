@@ -5,6 +5,7 @@ export const actPage = async (context) => {
     context.commit("mutPage", await api.Page("WaterPolo"));
     context.commit("mutLoader", false);
 };
+
 // тренера
 export const actAddTrainer = async ({ commit, state }, item) => {
     commit("mutLoader", true);
@@ -165,18 +166,31 @@ export const actAddBlog = async ({ commit, state }, item) => {
 
 export const actDeleteBlog = async ({ commit, state }, id) => {
     commit("mutLoader", true);
-    state.data.price.splice(id, 1);
+
+    state.data.blog = state.data.blog.filter((elem) => elem.id != id);
     state.data = await api.UploadPage(state.data);
     commit("mutLoader", false);
 };
 
 export const actChangeBlog = async ({ commit, state }, { id, item }) => {
     commit("mutLoader", true);
-    for (let key in item) {
-        if (item[key] != "") {
-            state.data.price[id][key] = item[key];
-        }
+
+    let src = "";
+    if (item.src != "") {
+        src = await api.UploadImg(item.src);
+        item.src = src[0];
     }
+
+    state.data.blog = state.data.blog.map(function (elem) {
+        if (elem.id == id) {
+            for (let key in item) {
+                if (item[key] != "") {
+                    elem[key] = item[key];
+                }
+            }
+        }
+        return elem;
+    });
 
     state.data = await api.UploadPage(state.data);
     commit("mutLoader", false);

@@ -47,7 +47,7 @@ export default {
             modelActive.value = false;
             clearNewTrainer();
         };
-        const changeTrainer = (id, item) => {
+        const changeTrainer = (id) => {
             store.dispatch("actChangeTrainer", {
                 id: id,
                 item: oldTrainer.value,
@@ -331,7 +331,7 @@ export default {
                 <button
                     type="button"
                     class="btn btn-outline-primary"
-                    @click="changeTrainer(index, item)"
+                    @click="changeTrainer(index)"
                     v-if="changeActive == index"
                 >
                     Сохранить

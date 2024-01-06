@@ -118,10 +118,6 @@ export default {
                         <option value="amateur">Любители</option>
                     </select>
                 </label>
-                <!-- <select class="form-select mt-3" v-model="newPrice.category">
-                    <option selected value="children">Дети</option>
-                    <option value="amateur">Любители</option>
-                </select> -->
             </nav>
             <div class="d-flex flex-column justify-content-between col-2 my-2">
                 <button

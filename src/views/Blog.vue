@@ -42,17 +42,17 @@ export default {
             modelActive.value = false;
             clearnewBlog();
         };
-        // const changeTrainer = (id, item) => {
-        //     store.dispatch("actChangeTrainer", {
-        //         id: id,
-        //         item: oldBlog.value,
-        //     });
-        //     cancelChangeTrainer();
-        // };
-        // const deleteTrainer = (id) => {
-        //     store.dispatch("actDeleteTrainer", id);
-        //     cancelChangeTrainer();
-        // };
+        const changeBlog = (id) => {
+            store.dispatch("actChangeBlog", {
+                id: id,
+                item: oldBlog.value,
+            });
+            cancelChangeBlog();
+        };
+        const deleteBlog = (id) => {
+            store.dispatch("actDeleteBlog", id);
+            cancelChangeBlog();
+        };
         const cancelChangeBlog = () => {
             oldBlog.value = {
                 title: "",
@@ -73,10 +73,9 @@ export default {
             blog: computed(() => store.getters.getData.blog),
             addBlog,
             cancelChangeBlog,
-            // changeTrainer,
+            changeBlog,
+            deleteBlog,
             clearnewBlog,
-            // addTrainer,
-            // deleteTrainer,
         };
     },
 };
@@ -126,7 +125,7 @@ export default {
                         <option selected value="children">Дети</option>
                         <option value="amateur">Любители</option>
                         <option value="federation">Федерация</option>
-                        <option value="stufrnt">Студенты</option>
+                        <option value="student">Студенты</option>
                     </select>
                 </label>
                 <label class="d-flex flex-column mt-3">
@@ -152,6 +151,126 @@ export default {
                     type="button"
                     class="btn btn-outline-info"
                     @click="clearnewBlog"
+                >
+                    Отменить
+                </button>
+            </div>
+        </div>
+        <div
+            class="d-flex justify-content-between bg-main p-3 br-10 my-2"
+            v-for="(item, index) in blog"
+            :key="index"
+        >
+            <SaveImage
+                class="col-2"
+                :image="item.src"
+                :dis="changeActive != index"
+                @parentNewImage="(e) => (oldBlog.src = e)"
+            />
+            <nav class="col-7 d-flex flex-column justify-content-between">
+                <label class="d-flex">
+                    <span class="input-group-text">Название:</span>
+                    <input
+                        type="text"
+                        class="form-control"
+                        :value="item.title"
+                        :disabled="changeActive != index"
+                        @change="oldBlog.title = $event.target.value"
+                    />
+                </label>
+                <label class="d-flex mt-3">
+                    <span class="input-group-text">Время:</span>
+                    <input
+                        type="text"
+                        class="form-control"
+                        :value="item.time"
+                        :disabled="changeActive != index"
+                        @change="oldBlog.time = $event.target.value"
+                    />
+                </label>
+                <label class="d-flex mt-3">
+                    <span class="input-group-text">Категория:</span>
+                    <select
+                        class="form-select"
+                        :disabled="changeActive != index"
+                        @change="oldBlog.category = $event.target.value"
+                    >
+                        <option
+                            :selected="item.category == 'children'"
+                            value="children"
+                        >
+                            Дети
+                        </option>
+                        <option
+                            :selected="item.category == 'amateur'"
+                            value="amateur"
+                        >
+                            Любители
+                        </option>
+                        <option
+                            :selected="item.category == 'federation'"
+                            value="federation"
+                        >
+                            Федерация
+                        </option>
+                        <option
+                            :selected="item.category == 'student'"
+                            value="student"
+                        >
+                            Студенты
+                        </option>
+                    </select>
+                </label>
+                <label
+                    class="d-flex flex-column mt-3"
+                    v-if="changeActive == index"
+                >
+                    <QuillEditor
+                        theme="snow"
+                        toolbar="essential"
+                        style="height: 300px"
+                        class="bg-light fs-5"
+                        contentType="html"
+                        :content="item.msg"
+                        v-model:content="oldBlog.msg"
+                    />
+                </label>
+                <div
+                    class="bg-light mt-3 p-2 br-10"
+                    v-html="item.msg"
+                    v-else
+                ></div>
+            </nav>
+            <div class="d-flex flex-column justify-content-between col-2">
+                <button
+                    type="button"
+                    class="btn btn-outline-danger"
+                    @click="deleteBlog(item.id)"
+                    v-if="changeActive == index"
+                >
+                    Удалить
+                </button>
+                <button
+                    type="button"
+                    class="btn btn-outline-success"
+                    @click="changeActive = index"
+                    v-else
+                >
+                    Редактировать
+                </button>
+                <button
+                    type="button"
+                    class="btn btn-outline-primary"
+                    @click="changeBlog(item.id)"
+                    v-if="changeActive == index"
+                >
+                    Сохранить
+                </button>
+                <button
+                    type="button"
+                    class="btn btn-outline-warning"
+                    @click="cancelChangeBlog()"
+                    v-if="changeActive == index"
                 >
                     Отменить
                 </button>
