@@ -1,34 +1,33 @@
 {
     "trainers": [
         {
-            "src": "https://klwp.pro/uploads/657b8bb0.jpg",
-            "name": "Алексей Иванович",
-            "phone_number": "+79990001122",
-            "info": "Тренер с хорошей карьерой",
-            "vk": "https://klwp.pro/",
-            "telegram": "https://klwp.pro/",
-            "train": ["children", "student", "amateur"]
+            "src": "https://klwp.pro/uploads/36df944e.png",
+            "name": "Тест Тестовы Тестовой",
+            "phone_number": "+79999999999",
+            "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit metus sit amet nisi lacinia condimentum.",
+            "vk": "https://www.google.com/search?q=%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8+%D0%BD%D0%B5%D1%82+%D1%84%D0%BE%D1%82%D0%BE&tbm=isch&ved=2ahUKEwjM_f-t7cuDAxVsGhAIHQnhB8cQ2-cCegQIABAA&oq=%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8+%D0%BD%D0%B5%D1%82+%D1%84%D0%BE%D1%82%D0%BE&gs_lcp=CgNpbWcQAzIFCAAQgAQyBQgAEIAEMgYIABAIEB4yBggAEAgQHjIGCAAQCBAeMgYIABAIEB46BAgjECc6CAgAEIAEELEDOgQIABADOgsIABCABBCxAxCDAVDNBVjGDWCeEGgAcAB4AIABU4gB1gSSAQE5mAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=YOaaZczNBuy0wPAPicKfuAw&bih=854&biw=1745#imgrc=gvCcuJIakXkcKM",
+            "telegram": "https://www.google.com/search?q=%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8+%D0%BD%D0%B5%D1%82+%D1%84%D0%BE%D1%82%D0%BE&tbm=isch&ved=2ahUKEwjM_f-t7cuDAxVsGhAIHQnhB8cQ2-cCegQIABAA&oq=%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8+%D0%BD%D0%B5%D1%82+%D1%84%D0%BE%D1%82%D0%BE&gs_lcp=CgNpbWcQAzIFCAAQgAQyBQgAEIAEMgYIABAIEB4yBggAEAgQHjIGCAAQCBAeMgYIABAIEB46BAgjECc6CAgAEIAEELEDOgQIABADOgsIABCABBCxAxCDAVDNBVjGDWCeEGgAcAB4AIABU4gB1gSSAQE5mAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=YOaaZczNBuy0wPAPicKfuAw&bih=854&biw=1745#imgrc=gvCcuJIakXkcKM",
+            "train": ["children", "amateur", "student"]
         },
         {
-            "src": "https://klwp.pro/uploads/657b8bb0.jpg",
-            "name": "Алексей Иванович",
-            "phone_number": "+79990001122",
-            "info": "Тренер с хорошей карьерой",
-            "vk": "https://klwp.pro/",
-            "telegram": "https://klwp.pro/",
-            "train": ["children", "student"]
+            "src": "https://klwp.pro/uploads/87f291d7.png",
+            "name": "Иван Иванович Иванов",
+            "phone_number": "+78888888888",
+            "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit metus sit amet nisi lacinia condimentum.",
+            "vk": "https://www.google.com/search?q=%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8+%D0%B2%D0%BE%D0%B4%D0%BD%D0%BE%D0%B3%D0%BE+%D0%BF%D0%BE%D0%BB%D0%BE&tbm=isch&ved=2ahUKEwi0xc-67cuDAxVfJxAIHXhgBqYQ2-cCegQIABAA&oq=%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8+%D0%B2%D0%BE%D0%B4%D0%BD%D0%BE%D0%B3%D0%BE+%D0%BF%D0%BE%D0%BB%D0%BE&gs_lcp=CgNpbWcQAzIECCMQJzoFCAAQgAQ6BggAEAgQHjoICAAQgAQQsQM6BAgAEAM6DggAEIAEEIoFELEDEIMBOgcIABCABBAYUJQDWPkXYL8aaABwAHgAgAHZAYgBlg6SAQYxMC42LjKYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=euaaZbSgI9_OwPAP-MCZsAo&bih=854&biw=1745#imgrc=98_jLPI73Gk7sM",
+            "telegram": "https://www.google.com/search?q=%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8+%D0%B2%D0%BE%D0%B4%D0%BD%D0%BE%D0%B3%D0%BE+%D0%BF%D0%BE%D0%BB%D0%BE&tbm=isch&ved=2ahUKEwi0xc-67cuDAxVfJxAIHXhgBqYQ2-cCegQIABAA&oq=%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8+%D0%B2%D0%BE%D0%B4%D0%BD%D0%BE%D0%B3%D0%BE+%D0%BF%D0%BE%D0%BB%D0%BE&gs_lcp=CgNpbWcQAzIECCMQJzoFCAAQgAQ6BggAEAgQHjoICAAQgAQQsQM6BAgAEAM6DggAEIAEEIoFELEDEIMBOgcIABCABBAYUJQDWPkXYL8aaABwAHgAgAHZAYgBlg6SAQYxMC42LjKYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=euaaZbSgI9_OwPAP-MCZsAo&bih=854&biw=1745#imgrc=98_jLPI73Gk7sM",
+            "train": ["children"]
         },
         {
-            "src": "https://klwp.pro/uploads/657b8bb0.jpg",
-            "name": "Алексей Иванович",
-            "phone_number": "+79990001122",
-            "info": "Тренер с хорошей карьерой",
-            "vk": "https://klwp.pro/",
-            "telegram": "https://klwp.pro/",
-            "train": ["children", "student"]
+            "src": "https://klwp.pro/uploads/00e5b2fa.jpg",
+            "name": "Админ Админович Админов",
+            "phone_number": "+77777777777",
+            "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit metus sit amet nisi lacinia condimentum.",
+            "vk": "https://www.google.com/search?q=%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8+%D0%B2%D0%BE%D0%B4%D0%BD%D0%BE%D0%B3%D0%BE+%D0%BF%D0%BE%D0%BB%D0%BE&tbm=isch&ved=2ahUKEwi0xc-67cuDAxVfJxAIHXhgBqYQ2-cCegQIABAA&oq=%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8+%D0%B2%D0%BE%D0%B4%D0%BD%D0%BE%D0%B3%D0%BE+%D0%BF%D0%BE%D0%BB%D0%BE&gs_lcp=CgNpbWcQAzIECCMQJzoFCAAQgAQ6BggAEAgQHjoICAAQgAQQsQM6BAgAEAM6DggAEIAEEIoFELEDEIMBOgcIABCABBAYUJQDWPkXYL8aaABwAHgAgAHZAYgBlg6SAQYxMC42LjKYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=euaaZbSgI9_OwPAP-MCZsAo&bih=854&biw=1745#imgrc=98_jLPI73Gk7sM",
+            "telegram": "https://www.google.com/search?q=%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8+%D0%B2%D0%BE%D0%B4%D0%BD%D0%BE%D0%B3%D0%BE+%D0%BF%D0%BE%D0%BB%D0%BE&tbm=isch&ved=2ahUKEwi0xc-67cuDAxVfJxAIHXhgBqYQ2-cCegQIABAA&oq=%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8+%D0%B2%D0%BE%D0%B4%D0%BD%D0%BE%D0%B3%D0%BE+%D0%BF%D0%BE%D0%BB%D0%BE&gs_lcp=CgNpbWcQAzIECCMQJzoFCAAQgAQ6BggAEAgQHjoICAAQgAQQsQM6BAgAEAM6DggAEIAEEIoFELEDEIMBOgcIABCABBAYUJQDWPkXYL8aaABwAHgAgAHZAYgBlg6SAQYxMC42LjKYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=euaaZbSgI9_OwPAP-MCZsAo&bih=854&biw=1745#imgrc=98_jLPI73Gk7sM",
+            "train": ["student", "amateur"]
         }
     ],
-
     "time": [
         {
             "week": "monday",
@@ -38,6 +37,60 @@
             "category": "children",
             "one": true,
             "two": true
+        },
+        {
+            "week": "thursday",
+            "time": "12.00",
+            "title": "Дети",
+            "address": "Тихоокеанская улица, 15",
+            "category": "children",
+            "one": "true",
+            "two": "true"
+        },
+        {
+            "week": "sunday",
+            "time": "9.00",
+            "title": "Любители",
+            "address": "Тихоокеанская улица, 5",
+            "category": "amateur",
+            "one": "true",
+            "two": "true"
+        },
+        {
+            "week": "tuesday",
+            "time": "18.30",
+            "title": "Любители",
+            "address": "Тихоокеанская улица, 5",
+            "category": "amateur",
+            "one": "true",
+            "two": "true"
+        },
+        {
+            "week": "tuesday",
+            "time": "18.30",
+            "title": "Студенты",
+            "address": "БФУ",
+            "category": "student",
+            "one": "true",
+            "two": "true"
+        },
+        {
+            "week": "thursday",
+            "time": "18.30",
+            "title": "Студенты",
+            "address": "БФУ",
+            "category": "student",
+            "one": "true",
+            "two": "true"
+        },
+        {
+            "week": "saturday",
+            "time": "18.30",
+            "title": "Студенты",
+            "address": "БФУ",
+            "category": "student",
+            "one": "true",
+            "two": "true"
         }
     ],
     "reviews": [
@@ -65,34 +118,34 @@
     "blog": [
         {
             "id": 0,
-            "title": "student",
-            "time": "11.12.2023",
-            "msg": "sfsd",
+            "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "time": "7.10.2023",
+            "msg": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit metus sit amet nisi lacinia condimentum. Phasellus eu nibh lobortis, tincidunt nisi in, ornare leo. Donec hendrerit interdum mollis. Vestibulum consequat erat sapien, a pellentesque quam accumsan nec. Mauris ex ex, placerat sollicitudin nisi sed, pharetra cursus mauris. Ut pretium eros eget mauris tempor dictum. Aenean non lorem erat. Quisque a tristique lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit metus sit amet nisi lacinia condimentum. Phasellus eu nibh lobortis, tincidunt nisi in, ornare leo. Donec hendrerit interdum mollis. Vestibulum consequat erat sapien, a pellentesque quam accumsan nec. Mauris ex ex, placerat sollicitudin nisi sed, pharetra cursus mauris. Ut pretium eros eget mauris tempor dictum. Aenean non lorem erat. Quisque a tristique lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit metus sit amet nisi lacinia condimentum. Phasellus eu nibh lobortis, tincidunt nisi in, ornare leo. Donec hendrerit interdum mollis. Vestibulum consequat erat sapien, a pellentesque quam accumsan nec. Mauris ex ex, placerat sollicitudin nisi sed, pharetra cursus mauris. Ut pretium eros eget mauris tempor dictum. Aenean non lorem erat. Quisque a tristique lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit metus sit amet nisi lacinia condimentum. Phasellus eu nibh lobortis, tincidunt nisi in, ornare leo. Donec hendrerit interdum mollis. Vestibulum consequat erat sapien, a pellentesque quam accumsan nec. Mauris ex ex, placerat sollicitudin nisi sed, pharetra cursus mauris. Ut pretium eros eget mauris tempor dictum. Aenean non lorem erat. Quisque a tristique lorem.</p>",
             "src": "https://klwp.pro/uploads/2974e7a2.jpeg",
             "category": "student"
         },
         {
             "id": 1,
             "title": "amateur",
-            "time": "11.12.2023",
-            "msg": "sfsd",
+            "time": "8.10.2023",
+            "msg": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit metus sit amet nisi lacinia condimentum. Phasellus eu nibh lobortis, tincidunt nisi in, ornare leo. Donec hendrerit interdum mollis. Vestibulum consequat erat sapien, a pellentesque quam accumsan nec. Mauris ex ex, placerat sollicitudin nisi sed, pharetra cursus mauris. Ut pretium eros eget mauris tempor dictum. Aenean non lorem erat. Quisque a tristique lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit metus sit amet nisi lacinia condimentum. Phasellus eu nibh lobortis, tincidunt nisi in, ornare leo. Donec hendrerit interdum mollis. Vestibulum consequat erat sapien, a pellentesque quam accumsan nec. Mauris ex ex, placerat sollicitudin nisi sed, pharetra cursus mauris. Ut pretium eros eget mauris tempor dictum. Aenean non lorem erat. Quisque a tristique lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit metus sit amet nisi lacinia condimentum. Phasellus eu nibh lobortis, tincidunt nisi in, ornare leo. Donec hendrerit interdum mollis. Vestibulum consequat erat sapien, a pellentesque quam accumsan nec. Mauris ex ex, placerat sollicitudin nisi sed, pharetra cursus mauris. Ut pretium eros eget mauris tempor dictum. Aenean non lorem erat. Quisque a tristique lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit metus sit amet nisi lacinia condimentum. Phasellus eu nibh lobortis, tincidunt nisi in, ornare leo. Donec hendrerit interdum mollis. Vestibulum consequat erat sapien, a pellentesque quam accumsan nec. Mauris ex ex, placerat sollicitudin nisi sed, pharetra cursus mauris. Ut pretium eros eget mauris tempor dictum. Aenean non lorem erat. Quisque a tristique lorem.</p>",
             "src": "https://klwp.pro/uploads/2974e7a2.jpeg",
             "category": "amateur"
         },
         {
             "id": 2,
             "title": "children",
-            "time": "11.12.2023",
-            "msg": "sfsd",
-            "src": "https://klwp.pro/uploads/2974e7a2.jpeg",
+            "time": "9.12.2023",
+            "msg": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit metus sit amet nisi lacinia condimentum. Phasellus eu nibh lobortis, tincidunt nisi in, ornare leo. Donec hendrerit interdum mollis. Vestibulum consequat erat sapien, a pellentesque quam accumsan nec. Mauris ex ex, placerat sollicitudin nisi sed, pharetra cursus mauris. Ut pretium eros eget mauris tempor dictum. Aenean non lorem erat. Quisque a tristique lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit metus sit amet nisi lacinia condimentum. Phasellus eu nibh lobortis, tincidunt nisi in, ornare leo. Donec hendrerit interdum mollis. Vestibulum consequat erat sapien, a pellentesque quam accumsan nec. Mauris ex ex, placerat sollicitudin nisi sed, pharetra cursus mauris. Ut pretium eros eget mauris tempor dictum. Aenean non lorem erat. Quisque a tristique lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit metus sit amet nisi lacinia condimentum. Phasellus eu nibh lobortis, tincidunt nisi in, ornare leo. Donec hendrerit interdum mollis. Vestibulum consequat erat sapien, a pellentesque quam accumsan nec. Mauris ex ex, placerat sollicitudin nisi sed, pharetra cursus mauris. Ut pretium eros eget mauris tempor dictum. Aenean non lorem erat. Quisque a tristique lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit metus sit amet nisi lacinia condimentum. Phasellus eu nibh lobortis, tincidunt nisi in, ornare leo. Donec hendrerit interdum mollis. Vestibulum consequat erat sapien, a pellentesque quam accumsan nec. Mauris ex ex, placerat sollicitudin nisi sed, pharetra cursus mauris. Ut pretium eros eget mauris tempor dictum. Aenean non lorem erat. Quisque a tristique lorem.</p>",
+            "src": "https://klwp.pro/uploads/00e5b2fa.jpg",
             "category": "children"
         },
         {
             "id": 3,
             "title": "federation",
             "time": "11.12.2023",
-            "msg": "sfsd",
-            "src": "https://klwp.pro/uploads/2974e7a2.jpeg",
+            "msg": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit metus sit amet nisi lacinia condimentum. Phasellus eu nibh lobortis, tincidunt nisi in, ornare leo. Donec hendrerit interdum mollis. Vestibulum consequat erat sapien, a pellentesque quam accumsan nec. Mauris ex ex, placerat sollicitudin nisi sed, pharetra cursus mauris. Ut pretium eros eget mauris tempor dictum. Aenean non lorem erat. Quisque a tristique lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit metus sit amet nisi lacinia condimentum. Phasellus eu nibh lobortis, tincidunt nisi in, ornare leo. Donec hendrerit interdum mollis. Vestibulum consequat erat sapien, a pellentesque quam accumsan nec. Mauris ex ex, placerat sollicitudin nisi sed, pharetra cursus mauris. Ut pretium eros eget mauris tempor dictum. Aenean non lorem erat. Quisque a tristique lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit metus sit amet nisi lacinia condimentum. Phasellus eu nibh lobortis, tincidunt nisi in, ornare leo. Donec hendrerit interdum mollis. Vestibulum consequat erat sapien, a pellentesque quam accumsan nec. Mauris ex ex, placerat sollicitudin nisi sed, pharetra cursus mauris. Ut pretium eros eget mauris tempor dictum. Aenean non lorem erat. Quisque a tristique lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit metus sit amet nisi lacinia condimentum. Phasellus eu nibh lobortis, tincidunt nisi in, ornare leo. Donec hendrerit interdum mollis. Vestibulum consequat erat sapien, a pellentesque quam accumsan nec. Mauris ex ex, placerat sollicitudin nisi sed, pharetra cursus mauris. Ut pretium eros eget mauris tempor dictum. Aenean non lorem erat. Quisque a tristique lorem.</p>",
+            "src": "https://klwp.pro/uploads/36df944e.png",
             "category": "federation"
         }
     ],
@@ -131,24 +184,15 @@
     "price": [
         {
             "title": "Разовое посещение",
-            "info": "Разовый платеж",
-            "cost": "600",
-            "descriptions": [
-                "Первая тренировка бесплатно",
-                "Разовое посещение тренировки"
-            ],
-            "category": "children"
+            "info": "1 занятие",
+            "cost": 800,
+            "category": "amateur"
         },
         {
-            "title": "Абонемент посещение",
-            "info": "Абонемент платеж",
-            "cost": "600",
-            "descriptions": [
-                "Первая тренировка бесплатно",
-                "Разовое посещение тренировки"
-            ],
-            "category": "children"
+            "title": "Абонемент",
+            "info": "12 занятий",
+            "cost": 3200,
+            "category": "amateur"
         }
-    ],
-    "studentsTeams": []
+    ]
 }

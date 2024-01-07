@@ -229,7 +229,7 @@ export default {
                     <input
                         type="text"
                         class="form-control"
-                        :value="item.name"
+                        :placeholder="item.name"
                         :disabled="changeActive != index"
                         @change="oldTrainer.name = $event.target.value"
                     />
@@ -239,7 +239,7 @@ export default {
                     <input
                         type="text"
                         class="form-control"
-                        :value="item.phone_number"
+                        :placeholder="item.phone_number"
                         :disabled="changeActive != index"
                         @change="oldTrainer.phone_number = $event.target.value"
                     />
@@ -249,7 +249,7 @@ export default {
                     <input
                         type="text"
                         class="form-control"
-                        :value="item.vk"
+                        :placeholder="item.vk"
                         :disabled="changeActive != index"
                         @change="oldTrainer.vk = $event.target.value"
                     />
@@ -259,7 +259,7 @@ export default {
                     <input
                         type="text"
                         class="form-control"
-                        :value="item.telegram"
+                        :placeholder="item.telegram"
                         :disabled="changeActive != index"
                         @change="oldTrainer.telegram = $event.target.value"
                     />
